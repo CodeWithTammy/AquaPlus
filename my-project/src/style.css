@@ -1,0 +1,39 @@
+@keyframes waveAnimation {
+    0% {
+      background-position-x: 0;
+    }
+    100% {
+      background-position-x: 1000px;
+    }
+  }
+  
+  .wave1 {
+    animation: waveAnimation 30s linear infinite;
+    z-index: 6;
+    opacity: 1;
+    animation-delay: 0s;
+  }
+  
+  .wave2 {
+    animation: waveAnimation 15s linear infinite reverse;
+    z-index: 5;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+  }
+  
+  .wave3 {
+    animation: waveAnimation 30s linear infinite;
+    z-index: 4;
+    opacity: 0.2;
+    animation-delay: -2s;
+  }
+  
+  .wave4 {
+    animation: waveAnimation 5s linear infinite;
+    z-index: 3;
+    opacity: 0.7;
+    animation-delay: -5s;
+    bottom: 20px;
+  }
+  

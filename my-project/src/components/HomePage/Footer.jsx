@@ -1,0 +1,118 @@
+import React from 'react'
+import Worker from "/images/worker.png"
+import { GoArrowUpRight } from "react-icons/go";
+import Logo from "/images/logo.png"
+import { RxInstagramLogo } from "react-icons/rx";
+import { FaFacebookF } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
+
+const Footer = () => {
+  return (
+    <>
+    <div className='w-full h-full bg-white text-white py-38 lg:py-48 p-3 lg:p-20'>
+        {/* Container */}
+        <div className='overflow-hidden flex flex-col lg:flex-row h-[35vh] lg:h-[35vh] justify-center 
+        bg-gradient-to-r from-primary via-primary-300 to-secondbasecolor rounded-3xl shadow-lg'>
+
+            {/* Text */}
+        <div className='flex flex-col text-center gap-4 md:text-center justify-center lg:items-start lg:px-10 lg:text-left lg:gap-2'>
+            <h1 className='text-5xl font-200 font-sans'>Contact Us for Pool Servicing</h1>
+            <p className='mb-8'>Experienced technicians ready to change your swimming experience</p>
+
+            {/* Buttons */}
+            <div className='flex flex-row gap-10 justify-center items-center lg:justify-start lg:items-start'>
+              <Link to="/Contact-Us">
+            <button className='bg-white w-40 h-10 rounded-full text-primary text-center 
+            hover:bg-basecolor hover:text-white transition duration-300'>Contact Us</button>
+            </Link>
+            <Link to="/Services" className='text-center border-2 p-2 rounded-full hover:bg-white hover:text-primary lg:text-left'>
+            Request Service <GoArrowUpRight className='inline-block hover:text-primary lg:text-white'/></Link>
+            </div>
+        </div>
+        {/* Image */}
+      
+        <img src={Worker} alt="Worker" className='hidden w-80 h-auto md:w-96 object-cover lg:block lg:translate-x-24 lg:translate-y-[-10%] lg:h-96' />
+        </div>
+
+
+
+        {/* Footer section */}
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 my-10 bg-white text-grey lg:mb-[-20vh]">
+        <div className="p-4">
+            <img src={Logo} alt="Logo" />
+            <p className='text-center mt-5'>Follow us on our socials</p>
+            {/* Socials */}
+              <div className="flex flex-row justify-center items-center">
+                        <a
+              href="https://www.instagram.com/aquacareadvantage?igsh=cHJtYjg1aXBrMnk0" target="_blank"
+                          className="text-primary text-2xl flex items-center justify-center w-9 h-12 "
+                        >
+                          <RxInstagramLogo className="text-xl" />
+                        </a>
+                        <a
+              href="https://www.facebook.com/share/r/19po57FJR1/?mibextid=wwXIfr" target="_blank"
+                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
+                        >
+                          <FaFacebookF className="text-xl" />
+                        </a>
+                        <a
+              href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8wNlnY7GM9F&_r=1" target="_blank"
+                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
+                        >
+                          <FaTiktok className="text-xl" />
+                        </a>
+                        <a
+              href="https://www.linkedin.com/in/aqua-careplus-a12156334/?originalSubdomain=jm" target="_blank"
+                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
+                        >
+                          <FaLinkedinIn className="text-xl" />
+                        </a>
+                      </div>
+        </div>
+    <div className="p-4">
+  <h1 className="text-left text-xl font-bold mb-5">Links</h1>
+  <ul className="grid grid-cols-2 gap-3">
+    <Link to="/"><li>Home</li></Link>
+    <Link to="/AboutUs"><li>About</li></Link>
+    <Link to="/Services"><li>Services</li></Link>
+    <Link to="/Pricing"><li>Packages</li></Link>
+    <Link to="/Rentals"><li>Rentals</li></Link>
+    <Link to="/Products"><li>Products</li></Link>
+    <Link to="/Contact-Us"><li>Contact</li></Link>
+    <Link to="/Services"><li>Request Service</li></Link>
+    <Link to="/Terms-and-Conditions"><li>Terms and Conditions</li></Link>
+    <Link to="/Services"><li>Privacy Policy</li></Link>
+  </ul>
+</div>
+
+        <div className=" p-4">
+            <h1 className='text-xl font-bold mb-5'>Working Hours</h1>
+            <p>Monday - Friday</p>
+            <p>8:00 AM - 5:00 PM</p>
+            <p>Saturday</p>
+            <p>9:00 AM - 2:00 PM</p>
+            <p>Sunday</p>
+            <p>Closed</p>
+        </div>
+        <div className=" p-4">
+            <h1 className='text-xl font-bold mb-5'>Get In Touch</h1>
+            <p>Contact us for any inquiries or questions</p>
+            <p>Email: aquacareadvantage@gmail.com</p>
+            <p>Telephone: 876-351-2761/876-517-4831/876-419-9212</p>
+
+        </div>
+</div>
+
+    </div>
+    {/* Copyright section */}
+<div className='bg-primary text-white text-center py-5 mx-0'>
+<p>Copyright © 2025 AquaCare Plus. All rights reserved.</p>
+</div>
+</>
+  );
+}
+
+export default Footer

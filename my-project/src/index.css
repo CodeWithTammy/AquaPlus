@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root{
+  --primary-color: #093D6C;
+  --secondary-color: white;
+  --red-color: #E31E1E;
+  --border-color:#000;
+  --default-font-color: #000;
+  --default-font:"Poppins", sans-serif;
+  --button-border-radius: 35px;
+  --base-color: #000;
+  --second-base-color: #007DFB;
+  --grey-color: #848484;
+}
+
+@keyframes waveAnimation {
+    0% {
+      background-position-x: 0;
+    }
+    100% {
+      background-position-x: 1000px;
+    }
+  }
+  
+  .wave1 {
+    animation: waveAnimation 30s linear infinite;
+    z-index: 6;
+    opacity: 1;
+    animation-delay: 0s;
+  }
+  
+  .wave2 {
+    animation: waveAnimation 15s linear infinite reverse;
+    z-index: 5;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+  }
+  
+  .wave3 {
+    animation: waveAnimation 30s linear infinite;
+    z-index: 4;
+    opacity: 0.2;
+    animation-delay: -2s;
+  }
+  
+  .wave4 {
+    animation: waveAnimation 5s linear infinite;
+    z-index: 3;
+    opacity: 0.7;
+    animation-delay: -5s;
+    bottom: 20px;
+  }
+  
+  .animation-pulse {
+    /*box-shadow: 0 0 0 20px rgba(229,62,62, 0.5);
+    transform: scale(0.8);*/
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        box-shadow: 0 0 0 0 rgb(62, 165, 229);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 60px rgba(229, 62, 62, 0);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+/* @layer utilities {
+  .clip-wave{
+  clip-path: polygon(0 75%, 25% 80%, 50% 75%, 75% 80%, 100% 75%, 100% 100%, 0% 100%);
+  }
+} */
+
+

@@ -20,59 +20,44 @@ export const NavbarMenu = [
     children:[
       {
         id: 1,
-        title: "Pool Vacuuming",
-        link: "#",
+        title: "Customized Maintenance",
+        link: "/Services/Customized-Maintenance",
       },
       {
         id: 2,
-        title: "Brushing of Pool Tiles & Floors",
-        link: "#",
+        title: "Pool Consultation ",
+        link: "/Services/Pool-Consultation",
       },
       {
         id: 3,
-        title: "Backwashing and Rinsing Filters",
-        link: "#",
+        title: "Renovations and Repairs",
+        link: "/Services/Renovations-and-Repairs",
       },
       {
         id: 4,
-        title: "Water Chemistry Testing & Balancing",
-        link: "#",
+        title: "Pool Construction",
+        link: "/Services/Pool-Construction",
         
       },
       {
         id: 5,
-        title: "Application of Essential Chemicals",
-        link: "#",
-    
+        title: "Commercial Pool Management",
+        link: "/Services/Commercial-Pool-Management",
+
       },
       {
         id: 6,
-        title: "Algaecide Treatment",
-        link: "#",
+        title: "Pool Inspection and Reports",
+        link: "/Services/Pool-Inspection-and-Reports",
         
    
-      },
-      {
-        id: 7,
-        title: "Detailed Inspection & Water Chemical Reports",
-        link: "#",
-      },
-      {
-        id: 8,
-        title: "Professional Facility Inspection",
-        link: "#",
-      },
-      {
-        id: 9,
-        title: "Ongoing Maintenance and Cleaning",
-        link: "#",
-      },
+      }
     ]
   },
     {
   id:4,
-  title: "Pricing",
-  link: "#",
+  title: "Packages",
+  link: "/Pricing",
   },
   {
     id: 5,
@@ -81,6 +66,11 @@ export const NavbarMenu = [
   },
   {
     id: 6,
+    title: "Products",
+    link: "/Products",
+  },
+  {
+    id: 7,
     title: "Contact",
     link: "/Contact-Us",
   },

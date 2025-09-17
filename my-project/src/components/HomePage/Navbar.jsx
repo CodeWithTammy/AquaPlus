@@ -11,10 +11,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import logo from "/images/logo.png";
 import { NavbarMenu } from "../../../mockData/data";
 
+
+
 // Components
 import QuotesSection from "./RequestSection";
 
-const Navbar = ({ quoteRef }) => {
+const Navbar = () => {
   // State for mobile menu open/close
   const [isOpen, setIsOpen] = useState(false);
 
@@ -26,16 +28,6 @@ const Navbar = ({ quoteRef }) => {
     setIsOpen(!isOpen);
   };
 
-  // Scroll smoothly to the quote/request section
-  const handleScrollToQuote = () => {
-    if (quoteRef?.current) {
-      quoteRef.current.scrollIntoView({ behavior: "smooth" });
-    } else {
-      console.warn("quoteRef is not attached");
-      console.log("quoteRef is", quoteRef);
-      console.log("quoteRef.current is", quoteRef?.current);
-    }
-  };
 
   return (
     <>
@@ -120,16 +112,17 @@ const Navbar = ({ quoteRef }) => {
           </ul>
 
           {/* Request Services button (desktop only) */}
+          <Link to="/Services">
           <button
           // When the button is clicked it will scroll to the quote section
-            onClick={handleScrollToQuote}
+           
             className="hidden bg-red text-secondary border-2 border-transparent px-4 py-2 rounded-3xl 
             lg:block lg:w-auto lg:h-auto lg:text-xs xl:text-lg hover:bg-white hover:text-red hover:border-red transition duration-300"
           >
             Request Services
             {/* Arrow icon  */}
             <FaArrowRightLong className="hidden xl:inline-block ml-2" />
-          </button>
+          </button></Link>
 
           {/* Mobile menu toggle button */}
           {/* if the menu is not open show hamburger menu and hide it on larger screens */}
@@ -204,17 +197,15 @@ const Navbar = ({ quoteRef }) => {
 
                 {/* Request Services button for mobile view */}
                 <li>
-                  <button
-                    onClick={() => {
-                      handleScrollToQuote();
-                      setIsOpen(false);
-                    }}
-                    className="w-full bg-red text-white px-4 py-2 mt-4 rounded-3xl hover:bg-white 
-                    sm:my-10 hover:text-red border-2 hover:border-red transition"
-                  >
-                    Request Services
-                    <FaArrowRightLong className="inline-block ml-2 sm:hidden md:hidden" />
-                  </button>
+                  <Link to="/Services">
+                 <button
+                  
+                  className="w-full bg-red text-white px-4 py-2 mt-4 rounded-3xl hover:bg-white 
+                            sm:my-10 hover:text-red border-2 hover:border-red transition"
+                >
+                  Request Services
+                  <FaArrowRightLong className="inline-block ml-2 sm:hidden md:hidden" />
+                </button></Link>
                 </li>
               </ul>
             </div>
