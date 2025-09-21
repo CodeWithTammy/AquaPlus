@@ -57,7 +57,7 @@ const OurStorySection = () => {
               At AquaCarePlus, your pool isn’t just a job to us — it’s a
               promise. A promise to protect, maintain, and enhance one of your
               home’s best features, giving you and your family the peace of mind
-              to enjoy every splash, swim, and sunny day.
+              to enjoy every splash, swim, and sunny day. <span className="text-primary italic font-bold">Every home deserves a pool.</span>
             </p>
           </div>
           <div className="w-[30vh] lg:w-[50vh]">

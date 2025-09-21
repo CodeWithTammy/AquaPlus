@@ -1,19 +1,20 @@
 // emailService.js
 import dotenv from 'dotenv';
-dotenv.config();
+
 import nodemailer from 'nodemailer';
 import ServiceRequest from '../models/RequestService.js';
 import Rental from '../models/RentalRequest.js';
 import CustomerPackage from '../models/CustomerPackage.js';
 
+dotenv.config();
 //
 
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "andersontamera1969@gmail.com", // your email
-      pass: "msslszchqveuyrcm",   // app password, NOT your real password
+      user: process.env.EMAIL_USER, // your email
+      pass: process.env.EMAIL_PASS,   // app password, NOT your real password
     },
     tls: {
     rejectUnauthorized: false, // <=== Allow self-signed certs
@@ -21,13 +22,15 @@ import CustomerPackage from '../models/CustomerPackage.js';
   });
 
 
+
+//Email that is sent to the company's email for service request
 const sendServiceRequestEmail = async (formData) => {
   const savedRequest = await ServiceRequest.create(formData);
 
 
   const mailOptions = {
-    from: `"AquaCarePlus" <andersontamera1969@gmail.com>`,
-    to: "andersontamera1969@gmail.com", // your email or multiple recipients
+    from: `"AquaCarePlusPools" <${process.env.EMAIL_USERNAME}>`,
+    to: `${process.env.EMAIL_USERNAME}`, // your email or multiple recipients
     subject: "New Pool Service Request",
 html: `
   <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; border: 1px solid #e0e0e0; padding: 20px; background-color: #f9f9f9;">
@@ -67,8 +70,8 @@ const sendRentalRequestEmail = async (formData) => {
   const savedRental = await Rental.create(formData);
 
   const mailOptions = {
-    from: `"AquaCarePlus" <andersontamera1969@gmail.com>`,
-    to: "andersontamera1969@gmail.com",
+    from: `"AquaCarePlusPools" <${process.env.EMAIL_USERNAME}>`,
+    to: `${process.env.EMAIL_USERNAME}`,
     subject: "New Pool Rental Request",
     html: `
         <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; border: 1px solid #e0e0e0; padding: 20px; background-color: #f9f9f9;">
@@ -106,8 +109,8 @@ const sendSubscriptionEmail = async (formData) => {
   const saveSubscription = await CustomerPackage.create(formData);
 
   const mailOptions = {
-    from: `"AquaCarePlus" <andersontamera1969@gmail.com>`,
-    to: "andersontamera1969@gmail.com", // your email or multiple recipients
+    from: `"AquaCarePlusPools" <${process.env.EMAIL_USERNAME}>`,
+    to: `${process.env.EMAIL_USERNAME}`, // your email or multiple recipients
     subject: "New Customer Subscription",
     html: `
       <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; border: 1px solid #e0e0e0; padding: 20px; background-color: #f9f9f9;">
@@ -141,8 +144,8 @@ const sendSubscriptionEmail = async (formData) => {
 // Contact Email
 const sendContactEmail = async (formData) => {
   const mailOptions = {
-    from: `"AquaCarePlus Contact" <${formData.email}>`, // customer's email
-    to: "andersontamera1969@gmail.com", // your business inbox
+    from: `"AquaCarePlusPools Contact" <${formData.email}>`, // customer's email
+    to: `${process.env.EMAIL_USERNAME}`, // your business inbox
     subject: "New Contact Message",
     html: `
       <div style="max-width:600px;margin:0 auto;padding:20px;font-family:Arial,sans-serif;border:1px solid #ddd;background:#fafafa;">
@@ -168,7 +171,7 @@ const sendContactEmail = async (formData) => {
 // send confirmation email to customer
 const sendSubscriptionConfirmation = async (subscription) => {
   const mailOptions = {
-    from: `"AquaCare Plus" <${process.env.EMAIL_USER}>`,
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
     to: subscription.email, // customer email from form
     subject: "Your AquaCarePlusPools Subscription Confirmation",
     html: `
@@ -234,7 +237,7 @@ const sendSubscriptionConfirmation = async (subscription) => {
 // confirmation email to customer about rental
 const sendRentalConfirmation = async (rental) => {
   const mailOptions = {
-    from: `"AquaCare Plus" <${process.env.EMAIL_USER}>`,
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
     to: rental.email, // customer email from form
     subject: "Your AquaCarePlusPools Rental Confirmation",
     html: `
@@ -307,7 +310,7 @@ const sendRentalConfirmation = async (rental) => {
 // confirmation email to customer about service request
 const sendServiceRequestConfirmation = async (service) => {
   const mailOptions = {
-    from: `"AquaCare Plus" <${process.env.EMAIL_USER}>`,
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
     to: service.email, // customer email from form
     subject: "Your AquaCarePlusPools Service Confirmation",
     html: `
@@ -379,7 +382,7 @@ const sendServiceRequestConfirmation = async (service) => {
 
 const subscriptionActiveEmail = async (subscription) =>  {
   const mailOptions = {
-    from: `"AquaCare Plus" <${process.env.EMAIL_USER}>`,
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
     to: subscription.email, // customer email from form
     subject: "Your AquaCarePlusPools Service Confirmation",
     html: `
@@ -411,7 +414,7 @@ const subscriptionActiveEmail = async (subscription) =>  {
 
 const subscriptionCancelEmail = async (subscription) =>  {
   const mailOptions = {
-    from: `"AquaCare Plus" <${process.env.EMAIL_USER}>`,
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
     to: subscription.email, // customer email from form
     subject: "Your AquaCarePlusPools Service Confirmation",
     html: `
@@ -439,6 +442,96 @@ const subscriptionCancelEmail = async (subscription) =>  {
   await transporter.sendMail(mailOptions);
 };
 
+const sendrentalStatusRentedEmail = async (rental) => {
+  const mailOptions = {
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
+    to: rental.email, // customer email from rental form
+    subject: "Your AquaCare Plus Pools Rental Confirmation",
+    html: `
+      <div style="max-width:600px;margin:0 auto;padding:20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#ffffff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+        
+        <div style="text-align:center;margin-bottom:20px;">
+          <img src="https://res.cloudinary.com/diwfc48gr/image/upload/v1747776587/logo_torq70.png" alt="Company Logo" style="max-width:140px;"/>
+        </div>
+
+        <p style="font-size:18px;color:#333;margin-bottom:10px;">
+          Hello <strong>${rental.name}</strong>,
+        </p>
+
+        <p style="font-size:16px;color:#555;line-height:1.6;">
+          ✅ Your rental for <strong style="color:#0066cc;">${rental.tool}</strong> has been confirmed!
+        </p>
+
+        <div style="margin:25px 0;padding:20px;border-radius:10px;background:#f4f9ff;border:1px solid #dbe7ff;">
+          <p style="margin:6px 0;font-size:15px;color:#444;">Rented Item: <strong>${rental.tool}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Start Date: <strong>${new Date(rental.rentedDate).toLocaleDateString()}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Return Date: <strong>${new Date(rental.returnDate).toLocaleDateString()}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Duration: <strong>${rental.weeks} week(s)</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Total Price: <strong>$${rental.total.toFixed(2)}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Email: <strong>${rental.email}</strong></p>
+        </div>
+
+        <p style="font-size:16px;color:#555;line-height:1.6;">
+          Thank you for choosing <strong>AquaCare Plus Pools</strong>! We look forward to serving you.
+        </p>
+
+        <p style="margin-top:30px;font-size:16px;color:#333;">
+          Best regards,<br/>
+          <strong>AquaCare Plus Pools Team</strong>
+        </p>
+      </div>
+    `,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+
+const rentalStatusReturnedEmail = async (rental) => {
+  const mailOptions = {
+    from: `"AquaCare Plus Pools" <${process.env.EMAIL_USERNAME}>`,
+    to: rental.email,
+    subject: "Your AquaCare Plus Pools Rental Has Been Returned",
+    html: `
+      <div style="max-width:600px;margin:0 auto;padding:20px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#ffffff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+        
+        <div style="text-align:center;margin-bottom:20px;">
+          <img src="https://res.cloudinary.com/diwfc48gr/image/upload/v1747776587/logo_torq70.png" alt="Company Logo" style="max-width:140px;"/>
+        </div>
+
+        <p style="font-size:18px;color:#333;margin-bottom:10px;">
+          Hello <strong>${rental.name}</strong>,
+        </p>
+
+        <p style="font-size:16px;color:#555;line-height:1.6;">
+          We have successfully received your rental return for <strong style="color:#0066cc;">${rental.tool}</strong>.
+        </p>
+
+        <div style="margin:25px 0;padding:20px;border-radius:10px;background:#f4f9ff;border:1px solid #dbe7ff;">
+          <p style="margin:6px 0;font-size:15px;color:#444;">Rented Item: <strong>${rental.tool}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Rented On: <strong>${new Date(rental.rentedDate).toLocaleDateString()}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Scheduled Return Date: <strong>${new Date(rental.returnDate).toLocaleDateString()}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Actual Return Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Duration: <strong>${rental.weeks} week(s)</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Total Paid: <strong>$${rental.total.toFixed(2)}</strong></p>
+          <p style="margin:6px 0;font-size:15px;color:#444;">Email: <strong>${rental.email}</strong></p>
+        </div>
+
+        <p style="font-size:16px;color:#555;line-height:1.6;">
+          Thank you for choosing <strong>AquaCare Plus Pools</strong>. We appreciate your business and look forward to serving you again!
+        </p>
+
+        <p style="margin-top:30px;font-size:16px;color:#333;">
+          Best regards,<br/>
+          <strong>AquaCare Plus Pools Team</strong>
+        </p>
+      </div>
+    `,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+
+
 export {
   sendServiceRequestEmail,
   sendRentalRequestEmail,
@@ -448,7 +541,9 @@ export {
   sendServiceRequestConfirmation,
   subscriptionActiveEmail,
   subscriptionCancelEmail,
-  sendContactEmail
+  sendContactEmail,
+  sendrentalStatusRentedEmail,
+  rentalStatusReturnedEmail
 };
 
 

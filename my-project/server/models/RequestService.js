@@ -17,14 +17,22 @@ const encrypt = (text) => {
 };
 
 const decrypt = (text) => {
-  if (!text) return "";
-  const [ivHex, encryptedHex] = text.split(":");
-  const iv = Buffer.from(ivHex, "hex");
-  const encryptedText = Buffer.from(encryptedHex, "hex");
-  const decipher = crypto.createDecipheriv(algorithm, key, iv);
-  let decrypted = decipher.update(encryptedText);
-  decrypted = Buffer.concat([decrypted, decipher.final()]);
-  return decrypted.toString("utf8");
+  if (!text || typeof text !== "string" || !text.includes(":")) {
+    return text || "";  // return plain value if not encrypted
+  }
+
+  try {
+    const [ivHex, encryptedHex] = text.split(":");
+    const iv = Buffer.from(ivHex, "hex");
+    const encryptedText = Buffer.from(encryptedHex, "hex");
+    const decipher = crypto.createDecipheriv(algorithm, key, iv);
+    let decrypted = decipher.update(encryptedText);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    return decrypted.toString("utf8");
+  } catch (err) {
+    console.error("Decryption failed for:", text, err.message);
+    return text; // fallback to original
+  }
 };
 
 const requestServiceSchema = new mongoose.Schema({
@@ -37,7 +45,11 @@ const requestServiceSchema = new mongoose.Schema({
   time: String,
   message: String,
   status:{type:String, default:"Pending"}
-}, { timestamps: true });
+}, { 
+  timestamps: true,
+  toJSON: { getters: true },   // important
+  toObject: { getters: true }  //important
+});
 
 const RequestService = mongoose.model("RequestService", requestServiceSchema);
 

@@ -8,11 +8,19 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import Footer from '../HomePage/Footer'
+import SEO from "../SEO"
 
 const ContactPage = () => {
   return (
     <div className='bg-white h-[100vh]'>
+        <SEO
+        title="Contact AquaCare Plus Pools - Get in Touch"
+        description="Contact AquaCare Plus Pools for pool cleaning, rentals, or service bookings. Reach us by phone, email, or our online form."
+        keywords="contact AquaCare Plus Pools, pool service contact, pool cleaning contact"
+        url="https://www.yourdomain.com/Contact-Us"
+        image="https://www.yourdomain.com/images/logo.png"
+      />
+
         <Navbar/>
         <Banner
         title={"Contact Us"}
@@ -61,11 +69,13 @@ const ContactPage = () => {
                <Link to="/"><li>Home</li></Link>
                <Link to="/AboutUs"><li>About</li></Link>
                <Link to="/Services"><li>Services</li></Link>
-               <Link to="#"><li>Packages</li></Link>
+               <Link to="/Pricing"><li>Packages</li></Link>
                <Link to="/Rentals"><li>Rentals</li></Link>
                <Link to="/Products"><li>Products</li></Link>
                <Link to="/Contact-Us"><li>Contact</li></Link>
-               <Link to="#"><li>Request Service</li></Link>
+               <Link to="/Services"><li>Request Service</li></Link>
+              <Link to="/Terms-and-Conditions"><li>Terms and Conditions</li></Link>
+              <Link to="/Services"><li>Privacy Policy</li></Link>
              </ul>
            </div>
                <div className=" p-4">
@@ -89,7 +99,9 @@ const ContactPage = () => {
          
            {/* Copyright section */}
        <div className='bg-primary text-white text-center py-5 mx-0'>
-       <p>Copyright © 2025 AquaCare Plus. All rights reserved.</p>
+       <p>Copyright © 2025 AquaCare Plus Pools. All rights reserved.</p>
+       <p className='text-xs'>Designed and Developed by <a href="https://github.com/CodeWithTammy" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
+
        </div>
     </div>
    

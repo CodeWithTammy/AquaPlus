@@ -43,7 +43,11 @@ const RentalRequestSchema = new mongoose.Schema({
   phone: { type: String, required: true, set: encrypt, get: decrypt },
   weeks: Number,
   total: Number,
-  status: { type: String, default: "Pending" }
+  status: { type: String, default: "Pending" },
+  rentStatus: { type: String, enum: ["Pending", "Rented", "Returned"], default: "Pending" },
+  returnDate: { type: Date },
+  rentedDate: Date
+
 });
 
 RentalRequestSchema.set("toJSON", { getters: true, virtuals: false });

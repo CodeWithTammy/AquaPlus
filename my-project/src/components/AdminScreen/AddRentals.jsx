@@ -17,7 +17,6 @@ import { Trash } from "lucide-react"; //Trash Icon
 import { Tooltip } from "@material-tailwind/react"; //tool tip
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-
 // Table head
 const TABLE_HEAD = ["Name", "Price", "Description", "Image", ""];
 
@@ -65,7 +64,6 @@ const RentalProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Handle image upload via FormData
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
@@ -80,7 +78,6 @@ const RentalProducts = () => {
       });
       const newRental = await res.json();
 
-      // Update local state
       setRentals((prev) => [newRental, ...prev]);
 
       // Reset form
@@ -122,32 +119,38 @@ const RentalProducts = () => {
   };
 
   return (
-    <Card className="flex-1 ml-80 p-6 overflow-y-auto h-full">
+    <Card className="flex-1 ml-0 md:ml-80 p-4 md:p-6 overflow-y-auto h-full">
+
+      {/* Header with title and add button */}
       <CardHeader floated={false} shadow={false} className="rounded-none mb-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
           <Typography variant="h5" color="blue-gray">
             Rental Products
           </Typography>
-          <Button className="bg-primary text-white" onClick={() => setShowForm(true)}>Add Rental</Button>
+          <Button className="bg-primary text-white w-full md:w-auto" onClick={() => setShowForm(true)}>
+            Add Rental
+          </Button>
         </div>
-            {/* Search input field */}
-        <div className="mt-4 mb-10 w-full md:w-72">
+
+        {/* Search input field */}
+        <div className="mt-4 mb-20 w-full md:mb-6 md:w-72">
           <Input
             className="pl-8"
-            placeholder="Search Name or Phone Number"
+            placeholder="Search Name or Description"
             icon={<MagnifyingGlassIcon className="h-5 w-5 m-2" />}
             value={search}
-            onChange={(e) => setSearch(e.target.value)} // Update search state
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </CardHeader>
 
-      <CardBody className="overflow-scroll px-0">
-        <table className="w-full table-auto text-left">
+      {/* Table */}
+      <CardBody className="overflow-x-auto px-0">
+        <table className="w-full min-w-[600px] table-auto text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
-                <th key={head} className="border-b p-4 bg-gray-100">
+                <th key={head} className="border-b p-3 bg-gray-100">
                   <Typography variant="small" color="blue-gray" className="font-normal">
                     {head}
                   </Typography>
@@ -157,22 +160,31 @@ const RentalProducts = () => {
           </thead>
           <tbody>
             {filteredRentals.slice(0, rowsPerPage).map((item) => (
-              <tr key={item._id} className="border-b ">
-                <td className="p-4">{item.name}</td>
-                <td className="p-4 break-words whitespace-normal">${item.price}</td>
-                <td className="p-4">{item.desc}</td>
-                <td className="p-4">
-                  {item.image && <img src={item.image} alt={item.name} className="w-20 h-20 object-cover" />}
+              <tr key={item._id} className="border-b">
+                <td className="p-3 break-words">{item.name}</td>
+                <td className="p-3 break-words">${item.price}</td>
+                <td className="p-3 break-words">{item.desc}</td>
+                <td className="p-3">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover"
+                    />
+                  )}
                 </td>
-                <td className="p-4">
-                    <Tooltip content="Delete Rental">
-                   <button
-                    onClick={() => handleDelete(item._id)}
-                    className="p-2 text-red-500 hover:text-red-700"
-                  >
-                    <Trash className="bg-red p-1 text-white rounded-lg shadow-lg
-                    hover:bg-black hover:text-white" alt="Delete" size={30} />
-                  </button>
+                <td className="p-3">
+                  <Tooltip content="Delete Rental">
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="p-2 text-red-500 hover:text-red-700"
+                    >
+                      <Trash
+                        className="bg-red p-1 text-white rounded-lg shadow-lg hover:bg-black hover:text-white"
+                        alt="Delete"
+                        size={30}
+                      />
+                    </button>
                   </Tooltip>
                 </td>
               </tr>
@@ -181,7 +193,8 @@ const RentalProducts = () => {
         </table>
       </CardBody>
 
-      <CardFooter className="flex items-center justify-between border-t p-4">
+      {/* Footer: rows per page selector */}
+      <CardFooter className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t p-4 gap-4 sm:gap-0">
         <Typography variant="small">
           Show{" "}
           <select
@@ -198,49 +211,66 @@ const RentalProducts = () => {
       </CardFooter>
 
       {/* Add Rental Dialog */}
-      <Dialog open={showForm} size="sm" handler={() => setShowForm(false)} className="max-w-md h-auto m-10 mx-auto">
+      <Dialog
+        open={showForm}
+        size="sm"
+        handler={() => setShowForm(false)}
+        className="max-w-md w-full m-4 mx-auto"
+      >
         <DialogHeader>Add Rental</DialogHeader>
         <DialogBody divider>
-          <form className="flex flex-col gap-6">
-            <label className="font-medium">Name of Equipment
-            <Input
-              value={name}
-              placeholder="e.g., 15ft Pontoon Boat"
-              onChange={(e) => setName(e.target.value)}
-            /></label>
-            <label className="font-medium">Price Description
-            <Input
-              type="text"
-              placeholder="e.g., $500 per 15ft/day"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            /></label>
-            <label className="font-medium">Description
-            <Input
-              value={desc}
-              placeholder="Brief description of the rental item"
-              onChange={(e) => setDescription(e.target.value)}
-            /></label>
-             <label className="font-medium">Amount ($)
-            <Input
-              value={amount}
+          <form className="flex flex-col gap-4">
+            <label className="font-medium">
+              Name of Equipment
+              <Input
+                value={name}
+                placeholder="e.g., 15ft Pontoon Boat"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label className="font-medium">
+              Price
+              <Input
+                type="text"
+                placeholder="e.g., $500 per day"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </label>
+            <label className="font-medium">
+              Description
+              <Input
+                value={desc}
+                placeholder="Brief description of the rental item"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </label>
+            <label className="font-medium">
+              Amount ($)
+              <Input
                 type="number"
-              onChange={(e) => setAmount(e.target.value)}
-            /></label>
-            <label className="font-medium">Image Upload
-           <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImageFile(e.target.files[0])}
-            />
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </label>
+            <label className="font-medium">
+              Image Upload
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImageFile(e.target.files[0])}
+                className="mt-1"
+              />
             </label>
           </form>
         </DialogBody>
-        <DialogFooter>
+        <DialogFooter className="flex flex-col sm:flex-row justify-end gap-2">
           <Button variant="text" color="red" onClick={() => setShowForm(false)}>
             Cancel
           </Button>
-          <Button className="bg-primary text-white" onClick={handleSubmit}>Submit</Button>
+          <Button className="bg-primary text-white" onClick={handleSubmit}>
+            Submit
+          </Button>
         </DialogFooter>
       </Dialog>
     </Card>

@@ -26,6 +26,8 @@ import {
   sendServiceRequestConfirmation,
   subscriptionActiveEmail,
   subscriptionCancelEmail,
+  sendrentalStatusRentedEmail,
+  rentalStatusReturnedEmail,
 } from "./emailservice/emailservice.js";
 import { body, param, validationResult } from "express-validator";
 
@@ -386,6 +388,56 @@ app.delete(
   }
 );
 
+//------------Toggle RENT STATUS-----------
+app.post(
+  "/toggleRent/:id",
+  [
+    param("id").isMongoId().withMessage("Invalid rental request ID"),
+    body("rentStatus").trim().escape(),
+  ],postLimiter,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const rentalStatus = await RentalRequest.findById(req.params.id);
+      if (!rentalStatus) return res.status(404).json({ error: "Rental Request not found" });
+
+      rentalStatus.rentStatus = req.body.rentStatus;
+
+      if (req.body.rentStatus === "Rented") {
+          // Use the startDate the user selected
+      const rentedDate = new Date(rentalStatus.startDate);
+      rentalStatus.rentedDate = rentedDate;
+
+        // Calculate return date from weeks
+      const weeks = rentalStatus.weeks || 1;
+      const returnDate = new Date(rentedDate);
+      returnDate.setDate(returnDate.getDate() + weeks * 7);
+
+      rentalStatus.returnDate = returnDate;
+      rentalStatus.rentStatus = "Rented";
+        
+  await sendrentalStatusRentedEmail(rentalStatus);
+
+}else if (req.body.rentStatus === "Returned") {
+         rentalStatus.rentStatus = "Returned";
+        rentalStatus.returnDate = new Date(); // actual returned date
+        await rentalStatusReturnedEmail(rentalStatus);
+      }else{
+          rentalStatus.rentStatus = "Pending";
+      }
+
+      await rentalStatus.save();
+      res.status(200).json({ rentalStatus });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to update rental status" });
+    }
+  }
+);
+
+
 
 // ---------------POST USER SERVICE REQUEST---------------
 // tested
@@ -419,9 +471,9 @@ app.post(
     body("date")
       .isISO8601()
       .withMessage("Invalid date format"),
-    body("time")
-      .matches(/^([0-1]\d|2[0-3]):([0-5]\d)$/)
-      .withMessage("Time must be in HH:MM 24-hour format"),
+body("time")
+  .matches(/^(0?[1-9]|1[0-2]):([0-5]\d) ?([AP]M)$/i)
+  .withMessage("Time must be in HH:MM AM/PM format"),
     body("message")
       .trim()
       .escape(),
@@ -451,8 +503,9 @@ app.post(
 app.get("/requestservices", async (req, res) => {
   try {
     const requests = await RequestService.find();
-    res.json(requests);
+    res.json(requests.map(r => r.toJSON()));
   } catch (err) {
+    console.error("Fetch error:" , err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -469,7 +522,7 @@ app.get(
     try {
       const request = await RequestService.findById(req.params.id);
       if (!request) return res.status(404).json({ error: "Request not found" });
-      res.json(request);
+      res.json(request.toJSON()); 
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Server error fetching request" });
@@ -588,6 +641,24 @@ app.post(
   }
 );
 
+app.delete(
+  "/subscriptions/:id",
+  [param("id").isMongoId().withMessage("Invalid subscription ID")],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const rentalrequest = await CustomerPackage.findByIdAndDelete(req.params.id);
+      if (!rentalrequest) return res.status(404).json({ error: "Subscription not found" });
+      res.json({ message: "Subscription deleted successfully", id: req.params.id });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to delete subscription" });
+    }
+  }
+);
 
 // -----------------SEND UPDATE FOR USER---------------
 //tested

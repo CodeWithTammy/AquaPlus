@@ -84,10 +84,17 @@ const ViewDetailsCard = ({ customerId, type, onClose }) => {
                 <p><strong>Start Date:</strong> {new Date(customer.startDate).toLocaleDateString()}</p>
                 <p><strong>Weeks:</strong> {customer.weeks}</p>
                 <p><strong>Total:</strong> {customer.total}</p>
+                <p><strong>Return Date:</strong> {new Date(customer.returnDate).toLocaleDateString()}</p>
                 <p>
                   <strong>Status:</strong>{" "}
                   <span className={`font-bold ${customer.status === "Completed" ? "text-green-600" : "text-yellow-600"}`}>
                     {customer.status}
+                  </span>
+                </p>
+                 <p>
+                  <strong>Rental Status:</strong>{" "}
+                  <span className={`font-bold ${customer.rentStatus === "Rented" ? "text-green-600" : "text-yellow-600"}`}>
+                    {customer.rentStatus}
                   </span>
                 </p>
               </>

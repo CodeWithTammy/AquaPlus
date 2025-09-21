@@ -1,14 +1,12 @@
-import React, { forwardRef, useState } from "react";
-import Datepicker from "react-tailwindcss-datepicker";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 import { motion as Motion } from "framer-motion";
+import { ErrorBoundary } from "react-error-boundary";
 
 
-const QuotesSection = forwardRef((props, ref) => {
-  const [value, setValue] = useState({
-    startDate: null,
-    endDate: null,
-  });
+const QuotesSection = () => {
 
   // form submission handler
   const [formData, setFormData] = useState({
@@ -32,31 +30,26 @@ const QuotesSection = forwardRef((props, ref) => {
   return `${h}:${minutes} ${ampm}`;
 };
 
-// Utility function: format date into something nice
-const formatDate = (dateString) => {
-  if (!dateString) return "";
-  const dateObj = new Date(dateString);
-  return dateObj.toLocaleDateString("en-US", {
-    weekday: "long",  // e.g. "Friday"
-    year: "numeric",  // e.g. "2025"
-    month: "long",    // e.g. "September"
-    day: "numeric",   // e.g. "12"
-  });
-};
 
   const [loading, setLoading] = useState(false);
   // Handle form submission
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
 
   try {
+    // Date from <input type="date"> is already YYYY-MM-DD
+    const formattedDate = formData.date;
     const formattedTime = formatTo12Hour(formData.time);
 
     const response = await fetch("http://localhost:5000/requestservices", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...formData, time: formattedTime }),
+      body: JSON.stringify({
+        ...formData,
+        date: formattedDate, // ISO date
+        time: formattedTime, // 24-hour format
+      }),
     });
 
     if (response.ok) {
@@ -69,6 +62,8 @@ const formatDate = (dateString) => {
           confirmButton: "bg-primary text-white font-semibold hover:bg-red",
         },
       });
+
+      // Reset form
       setFormData({
         full_name: "",
         phone: "",
@@ -79,22 +74,25 @@ const formatDate = (dateString) => {
         time: "",
         message: "",
       });
-      setValue({
-  startDate: null,
-  endDate: null,
-});
+
     } else {
+      const errorData = await response.json();
+      console.error("Submission failed:", errorData);
       alert("Failed to submit request.");
     }
+
   } catch (err) {
     console.error("Error:", err);
+    alert("An unexpected error occurred.");
   } finally {
-    setLoading(false); // reset button state
+    setLoading(false);
   }
 };
 
+
+
   return (
-    <div ref={ref} id="quotesection" className="w-full h-full">
+    <div id="quotesection" className="w-full h-full">
       <Motion.div
   initial={{ opacity: 0, y: 50 }}   // start hidden & moved down
   whileInView={{ opacity: 1, y: 0 }} // animate only when visible
@@ -206,21 +204,33 @@ const formatDate = (dateString) => {
                   <label className="block text-sm text-white mb-1">
                     Preferred Service Date
                   </label>
-                  <Datepicker
-                    useRange={false}
-                    asSingle={true}
-                    value={value}
+                  <div className="relative max-w-sm">
+                  <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <svg
+                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                    </svg>
+                  </div>
+
+                  <input
+                    type="date"
                     id="date"
-                    onChange={(newValue) => {
-                      setValue(newValue); // updates the Datepicker UI
-                      setFormData({
-                        ...formData,
-                        date: formatDate(newValue?.startDate), // formatted
-                      });
-                    }}
-                    // onChange={(newValue) => setValue(newValue)}
-                    inputClassName="w-full rounded-full px-4 py-3 text-black focus:ring-2 focus:ring-yellow-400"
+                    name="date"
+                    value={formData.date || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, date: e.target.value })
+                    }
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                     focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                    placeholder="Select date"
+                    required
                   />
+                </div>
                 </div>
 
                 {/* Time Picker */}
@@ -311,6 +321,6 @@ const formatDate = (dateString) => {
       </Motion.div>
     </div>
   );
-});
+};
 
 export default QuotesSection;

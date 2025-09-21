@@ -5,6 +5,7 @@ import Navbar from '../HomePage/Navbar'
 import BannerSection from '../ReuseableComponents/BannerSection'
 import Footer from '../HomePage/Footer'
 import RentalForm from '../ReuseableComponents/RentalForm'
+import SEO from "../SEO";
 
 
 
@@ -25,6 +26,15 @@ const RentalHomePage = () => {
     
   return (
     <div>
+      <SEO
+        title="AquaCare Plus Pools Rentals - Rent Pool Equipment & Tools"
+        description="Affordable pool equipment rentals including vacuums, pumps, and maintenance tools. AquaCare Plus Pools makes pool care easy."
+        keywords="pool rentals, pool equipment rental, pool tools rental"
+        url="https://www.yourdomain.com/Rentals"
+        image="https://www.yourdomain.com/images/about2.jpg"
+      />
+    
+ 
         <Navbar/>
         <BannerSection
         title="Rentals"

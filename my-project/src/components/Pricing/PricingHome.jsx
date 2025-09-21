@@ -7,6 +7,7 @@ import { motion as Motion } from "framer-motion";
 import { PackagesData } from "../../../mockData/packagesdata";
 import PackageComponent from "../ReuseableComponents/PackageComponent";
 import { Typography } from "@material-tailwind/react";
+import SEO from "../SEO";
 
 // Dummy FAQ data
 const faqs = [
@@ -18,6 +19,15 @@ const faqs = [
 const PricingHome = () => {
   return (
     <div className="flex flex-col min-h-screen">
+
+       <SEO
+        title="AquaCare Plus Pools Packages - Affordable Pool Care Plans"
+        description="Choose from our pool cleaning packages: Starter, Standard, and Premium. Find the perfect plan for your pool care needs."
+        keywords="pool packages, pool cleaning plans, AquaCare Plus Pools packages"
+        url="https://www.yourdomain.com/Pricing"
+        image="https://www.yourdomain.com/images/packages-preview.jpg"
+      />
+
       {/* Navbar */}
       <Navbar />
 
@@ -53,7 +63,7 @@ const PricingHome = () => {
                   ))}
                 </div>
                 <Typography variant="small" className="mt-10 font-normal !text-gray-500">
-                  100% Maintenance Money Back Guarantee if you’re unsatisfied. You also have 30 days to request a refund.
+                  100% Maintenance Money Back Guarantee if you’re unsatisfied. 
                 </Typography>
               </div>
             </section>

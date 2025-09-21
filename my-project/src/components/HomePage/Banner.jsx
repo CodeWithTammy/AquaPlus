@@ -23,7 +23,7 @@ const Banner = () => {
           {/* Social Media Icons */}
           <div className="hidden lg:flex flex-col space-y-5 z-10">
             <a
-              href="https://www.instagram.com/aquacareadvantage?igsh=cHJtYjg1aXBrMnk0" target="_blank"
+              href="https://www.instagram.com/aquacarepluspools?igsh=cHJtYjg1aXBrMnk0" target="_blank"
               className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
             >
               <RxInstagramLogo className="text-3xl" />
@@ -35,7 +35,7 @@ const Banner = () => {
               <FaFacebookF className="text-3xl" />
             </a>
             <a
-              href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8wNlnY7GM9F&_r=1" target="_blank"
+              href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8ztz0jVbGjz&_r=1" target="_blank"
               className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
             >
               <FaTiktok className="text-3xl" />

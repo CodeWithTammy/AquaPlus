@@ -91,9 +91,9 @@ const Footer = () => {
         <div className=" p-4">
             <h1 className='text-xl font-bold mb-5'>Working Hours</h1>
             <p>Monday - Friday</p>
-            <p>8:00 AM - 5:00 PM</p>
+            <p>9:00 AM - 5:00 PM</p>
             <p>Saturday</p>
-            <p>9:00 AM - 2:00 PM</p>
+            <p>Closed</p>
             <p>Sunday</p>
             <p>Closed</p>
         </div>
@@ -101,15 +101,16 @@ const Footer = () => {
             <h1 className='text-xl font-bold mb-5'>Get In Touch</h1>
             <p>Contact us for any inquiries or questions</p>
             <p>Email: aquacareadvantage@gmail.com</p>
-            <p>Telephone: 876-351-2761/876-517-4831/876-419-9212</p>
+            <p>Telephone: 876-351-2761/876-517-4831/876-844-0998</p>
 
         </div>
 </div>
 
     </div>
     {/* Copyright section */}
-<div className='bg-primary text-white text-center py-5 mx-0'>
-<p>Copyright © 2025 AquaCare Plus. All rights reserved.</p>
+<div className='bg-primary text-white text-center py-2 mx-0'>
+<p>Copyright © 2025 AquaCare Plus Pools. All rights reserved.</p>
+<p className='text-xs'>Designed and Developed by <a href="https://github.com/CodeWithTammy" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
 </div>
 </>
   );

@@ -14,7 +14,7 @@ const firstSection = () => {
   viewport={{ once: true, amount: 0.3 }} // once=true means animate only first time
 >
       <h1 className="text-3xl xs:text-sm sm:text-xl md:2xl ">
-        Best Pool Services in <br className="block md:hidden lg:hidden"/><b>Kingston,Jamaica</b>
+        Best Pool Services in your city, <br className="block md:hidden lg:hidden"/><b>Jamaica</b>
       </h1>
 
         {/* description of the companies qualities*/}

@@ -10,23 +10,18 @@ const OurWorkSection = () => {
   const works = [
     {
       id: 1,
-      image: "/images/service1.jpg",
-      videoUrl: "#",
+      image: "#",
+      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758428170/workvideo_1_s1kff5.mp4",
     },
     {
       id: 2,
       image: "#",
-      videoUrl: "#",
+      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758428192/workvideo_2_ev4c1z.mp4",
     },
     {
       id: 3,
       image: "#",
-      videoUrl: "#",
-    },
-    {
-      id: 4,
-      image: "#",
-      videoUrl: "#",
+      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758429031/IMG_5857_vyb5bi.mp4",
     },
   ];
 
@@ -71,10 +66,13 @@ const OurWorkSection = () => {
                   {works.map((work) => (
                     <SwiperSlide key={work.id}>
                       <div className="relative group rounded-lg overflow-hidden">
-                        <img
-                          src={work.image}
-                          alt="Pool Work"
+                        <video
+                          src={work.videoUrl}
+                          muted
+                          loop
+                          playsInline
                           className="w-full h-72 object-cover"
+                          poster={work.image !== "#" ? work.image : undefined} // fallback if you still want a static poster
                         />
                         <div className="absolute inset-0 bg-blue-500 bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                           <button
@@ -83,13 +81,11 @@ const OurWorkSection = () => {
                           >
                             <FaPlay className="w-6 h-6" />
                           </button>
-                          <div className="mt-4 text-white text-center">
-                            <p className="text-sm font-medium">Cleaning & Services</p>
-                            <h4 className="font-bold">Crafting Pool Perfection</h4>
-                          </div>
+                         
                         </div>
                       </div>
                     </SwiperSlide>
+
                   ))}
                 </Swiper>
               </div>

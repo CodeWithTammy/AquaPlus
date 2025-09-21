@@ -7,12 +7,21 @@ import Footer from "../HomePage/Footer";
 import TeamSection from "../HomePage/TeamSection";
 import WorkProcessSection from "./WorkProcessSection";
 import BannerSection from "../ReuseableComponents/BannerSection";
+import SEO from "../SEO";
 
 const AboutUs = () => {
 
 
   return (
     <div>
+       <SEO
+        title="About AquaCare Plus Pools - Trusted Pool Cleaning Experts"
+        description="Learn more about AquaCare Plus Pools, our mission, and our commitment to providing professional pool cleaning and maintenance services."
+        keywords="about AquaCare Plus Pools, pool cleaning experts, pool maintenance company"
+        url="https://www.yourdomain.com/AboutUs"
+        image="https://www.yourdomain.com/images/logo.png"
+      />
+   
       <Navbar />
       {/* Banner Section */}
       <BannerSection

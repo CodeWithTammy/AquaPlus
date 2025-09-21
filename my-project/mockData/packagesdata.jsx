@@ -32,7 +32,7 @@ export const PackagesData = [
     },
     {
       title: "Premium Package",
-      desc: "Per month: Full pool service in JMD.\nIdeal for Luxury/High traffic pools",
+      desc: "Per month: Full pool service,\nIdeal for Luxury/High traffic pools",
       price: ["JMD$", "65,000", "mo"],
       options: [
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Customized Maintenance Plan" },
