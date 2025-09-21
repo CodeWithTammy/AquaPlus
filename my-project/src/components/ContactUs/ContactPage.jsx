@@ -75,7 +75,7 @@ const ContactPage = () => {
                <Link to="/Contact-Us"><li>Contact</li></Link>
                <Link to="/Services"><li>Request Service</li></Link>
               <Link to="/Terms-and-Conditions"><li>Terms and Conditions</li></Link>
-              <Link to="/Services"><li>Privacy Policy</li></Link>
+              <Link to="/Privacy-Policy"><li>Privacy Policy</li></Link>
              </ul>
            </div>
                <div className=" p-4">
