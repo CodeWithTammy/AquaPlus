@@ -46,30 +46,30 @@ const Footer = () => {
             <p className='text-center mt-5'>Follow us on our socials</p>
             {/* Socials */}
               <div className="flex flex-row justify-center items-center">
-                        <a
-              href="https://www.instagram.com/aquacareadvantage?igsh=cHJtYjg1aXBrMnk0" target="_blank"
-                          className="text-primary text-2xl flex items-center justify-center w-9 h-12 "
-                        >
-                          <RxInstagramLogo className="text-xl" />
-                        </a>
-                        <a
-              href="https://www.facebook.com/share/r/19po57FJR1/?mibextid=wwXIfr" target="_blank"
-                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
-                        >
-                          <FaFacebookF className="text-xl" />
-                        </a>
-                        <a
-              href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8wNlnY7GM9F&_r=1" target="_blank"
-                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
-                        >
-                          <FaTiktok className="text-xl" />
-                        </a>
-                        <a
-              href="https://www.linkedin.com/in/aqua-careplus-a12156334/?originalSubdomain=jm" target="_blank"
-                          className="text-primary text-2xl flex items-center justify-center w-12 h-12"
-                        >
-                          <FaLinkedinIn className="text-xl" />
-                        </a>
+                          <a
+                                      href="https://www.instagram.com/aquacarepluspools?igsh=cHJtYjg1aXBrMnk0" target="_blank"
+                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                    >
+                                      <RxInstagramLogo className="text-3xl" />
+                                    </a>
+                                    <a
+                                      href="https://www.facebook.com/share/r/19po57FJR1/?mibextid=wwXIfr" target="_blank"
+                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                    >
+                                      <FaFacebookF className="text-3xl" />
+                                    </a>
+                                    <a
+                                      href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8ztz0jVbGjz&_r=1" target="_blank"
+                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                    >
+                                      <FaTiktok className="text-3xl" />
+                                    </a>
+                                    <a
+                                      href="https://www.linkedin.com/in/aqua-careplus-a12156334/?originalSubdomain=jm" target="_blank"
+                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                    >
+                                      <FaLinkedinIn className="text-3xl" />
+                                    </a>
                       </div>
         </div>
     <div className="p-4">
