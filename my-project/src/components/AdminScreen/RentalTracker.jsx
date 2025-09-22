@@ -107,7 +107,7 @@ const RentalTracker = () => {
     if (!window.confirm("Are you sure you want to delete this rental?")) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete rental");
     } catch (err) {
