@@ -7,7 +7,7 @@ const ListOfServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`) // Your backend API
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api`) // Your backend API
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.error("Error fetching services:", err));
