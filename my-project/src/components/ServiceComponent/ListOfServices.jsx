@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import dotenv from 'dotenv';
+dotenv.config();
 import Cards from "../ReuseableComponents/Cards";
 import { motion as Motion } from "framer-motion";
 
@@ -6,7 +8,7 @@ const ListOfServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/") // Your backend API
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`) // Your backend API
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.error("Error fetching services:", err));

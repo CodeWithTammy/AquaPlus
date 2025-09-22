@@ -1,5 +1,7 @@
 // RentalPopup.jsx
 import { useState } from "react";
+import dotenv from 'dotenv';
+dotenv.config();
 import Swal from "sweetalert2";
 
 export default function RentalForm({ tool, price, isOpen, onClose }) {
@@ -29,7 +31,7 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
     console.log("Sending rentalData:", rentalData);
 
     try {
-      const res = await fetch("http://localhost:5000/rentalrequest", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rentalData),

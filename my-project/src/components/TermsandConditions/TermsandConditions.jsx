@@ -51,9 +51,15 @@ const TermsandConditions = () => {
             We may update these Terms & Conditions from time to time. Continued use of our services constitutes acceptance of any changes.
           </p>
         </section>
+        <section className="mb-6">
+          <h2 className="text-2xl font-semibold mb-2">6. Use of Email for Marketing</h2>
+          <p className="text-gray-600">
+           By providing your email address when using our services or signing up on our website, you consent to receive newsletters, promotional offers, updates, and other marketing communications from AquaCare Plus Pools. You may opt out of receiving these communications at any time by clicking the “unsubscribe” link in any email or by contacting us directly. We respect your privacy and will never share your email address with third parties for marketing purposes without your consent.
+          </p>
+        </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-2">6. Contact</h2>
+          <h2 className="text-2xl font-semibold mb-2">7. Contact</h2>
           <p className="text-gray-600">
             If you have any questions regarding these Terms & Conditions, please contact us at <a href="mailto:aquacareadvantage@gmail.com" className="text-primary font-medium underline">aquacareadvantage@gmail.com</a>.
           </p>

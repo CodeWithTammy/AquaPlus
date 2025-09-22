@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import {
@@ -38,7 +40,7 @@ const RentalProducts = () => {
   useEffect(() => {
     const socket = io("http://localhost:5000");
 
-    fetch("http://localhost:5000/rentals")
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/rentals`)
       .then((res) => res.json())
       .then((data) => setRentals(data))
       .catch((err) => console.error(err));
@@ -72,7 +74,7 @@ const RentalProducts = () => {
     formData.append("image", image);
 
     try {
-      const res = await fetch("http://localhost:5000/rentals", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/rentals`, {
         method: "POST",
         body: formData,
       });
@@ -104,7 +106,7 @@ const RentalProducts = () => {
     if (!window.confirm("Are you sure you want to delete this rental?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/rentals/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/rentals/${id}`, {
         method: "DELETE",
       });
 

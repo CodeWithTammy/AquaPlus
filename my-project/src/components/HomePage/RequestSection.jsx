@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -42,7 +44,7 @@ const handleSubmit = async (e) => {
     const formattedDate = formData.date;
     const formattedTime = formatTo12Hour(formData.time);
 
-    const response = await fetch("http://localhost:5000/requestservices", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

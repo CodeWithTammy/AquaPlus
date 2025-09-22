@@ -1,5 +1,7 @@
 // Subscription form component
 import React, { useState } from "react";
+import dotenv from 'dotenv';
+dotenv.config();
 import Swal from "sweetalert2";
 
 const PricingForm = ({ plan, onClose }) => {
@@ -28,7 +30,7 @@ const PricingForm = ({ plan, onClose }) => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/subscriptions", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

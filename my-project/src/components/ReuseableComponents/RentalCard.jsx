@@ -1,4 +1,6 @@
 import React, { useEffect,useState } from 'react';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import RentalForm from '../ReuseableComponents/RentalForm'
 
@@ -13,7 +15,7 @@ const RentalCard = ({ image, name, description, price }) => {
     useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const res = await fetch("http://localhost:5000/rentals");
+        const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals`);
         const data = await res.json();
 
         // Map rental names to amounts

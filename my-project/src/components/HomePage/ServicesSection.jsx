@@ -1,4 +1,6 @@
 import React from 'react'
+import dotenv from 'dotenv';
+dotenv.config();
 import Servicebg from "/images/servicebg.png"
 import ServiceCard from './ServiceCard'
 import { useEffect, useState } from 'react';
@@ -13,7 +15,7 @@ const ServicesSection = () => {
    const [services, setServices] = useState([]);
   
     useEffect(() => {
-      fetch('http://localhost:5000/') // API endpoint to fetch services
+      fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`) // API endpoint to fetch services
         .then(res => res.json())
         .then(data => setServices(data))
         .catch(err => console.error("Error fetching services:", err));

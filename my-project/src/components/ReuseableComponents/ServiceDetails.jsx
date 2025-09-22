@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import dotenv from 'dotenv';
+dotenv.config();
 import { useParams } from "react-router-dom";
 import Navbar from "../HomePage/Navbar";
 import Banner from "../ReuseableComponents/BannerSection";
@@ -24,7 +26,7 @@ const ServiceDetails = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/Services/${title}`)
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/Services/${title}`)
       .then((res) => res.json())
       .then((data) => setDetail(data))
       .catch((err) => console.error("Error fetching details:", err));
@@ -93,7 +95,7 @@ const ServiceDetails = () => {
                   const phone = e.target.phone.value;
 
                   try {
-                    const res = await fetch("http://localhost:5000/contact", {
+                    const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/contact`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ name, email, message, phone }),

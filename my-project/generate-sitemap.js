@@ -3,7 +3,7 @@ import { createWriteStream } from "fs";
 
 
 async function generateSitemap() {
-  const smStream = new SitemapStream({ hostname: "https://www.yourdomain.com" });
+  const smStream = new SitemapStream({ hostname: "https://www.aquacarepluspoolsja.com/" });
   const writeStream = createWriteStream("./public/sitemap.xml");
 
   smStream.pipe(writeStream);

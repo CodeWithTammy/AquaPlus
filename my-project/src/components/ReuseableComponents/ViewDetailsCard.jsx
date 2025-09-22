@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const ViewDetailsCard = ({ customerId, type, onClose }) => {
   const [customer, setCustomer] = useState(null);
@@ -6,11 +8,11 @@ const ViewDetailsCard = ({ customerId, type, onClose }) => {
 
   const endpoint =
     type === "service"
-      ? `http://localhost:5000/requestservices/${customerId}`
+      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices/${customerId}`
       : type === "rental"
-      ? `http://localhost:5000/rentalrequest/${customerId}`
+      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${customerId}`
       : type === "subscription"
-      ? `http://localhost:5000/subscriptions/${customerId}`
+      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions/${customerId}`
       : null;
 
   useEffect(() => {

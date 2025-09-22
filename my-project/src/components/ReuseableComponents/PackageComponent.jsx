@@ -150,18 +150,7 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
 
   );
 }
- 
-//   return (
-//     <section className="py-24 m-0">
-//       <div className="container mx-auto flex flex-col justify-center items-center ">
-//         <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
-//           {cards.map(({ title, desc, price, options }, key) => (
-//             <PricingCard key={key} title={title} desc={desc} price={price} options={options} />
-//           ))}
-//         </div>
-//         </div>
-//     </section>
-//   );
+
 
 
 export default PackageComponent;

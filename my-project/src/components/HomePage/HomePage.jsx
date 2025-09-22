@@ -20,8 +20,8 @@ const App = () => {
         title="AquaCare Plus Pools - Professional Pool Service"
         description="Book reliable pool cleaning and maintenance services with AquaCare Plus Pools."
         keywords="pool cleaning, pool maintenance, AquaCare Plus Pools, pool services"
-        url="https://www.yourdomain.com/"
-        image="https://www.yourdomain.comimages/logo.png"
+        url="https://www.aquacarepluspoolsja.com/"
+        image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
     
       <Navbar quoteRef={quoteRef}/>

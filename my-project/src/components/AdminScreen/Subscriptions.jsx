@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import ViewDetailsCard from "../ReuseableComponents/ViewDetailsCard";
@@ -51,7 +54,7 @@ const Subscriptions = () => {
   useEffect(() => {
     const socket = io("http://localhost:5000");
 
-    fetch("http://localhost:5000/subscriptions")
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions`)
       .then((res) => res.json())
       .then((data) => setRequest(data))
       .catch((err) => console.error("Error fetching requests:", err));
@@ -87,7 +90,7 @@ const Subscriptions = () => {
 
     const updatedItem = request.find((item) => item._id === id);
     try {
-      await fetch(`http://localhost:5000/subscriptions/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -115,7 +118,7 @@ const Subscriptions = () => {
 
     const updatedItem = request.find((item) => item._id === id);
     try {
-      await fetch(`http://localhost:5000/subscriptions/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -144,7 +147,7 @@ const Subscriptions = () => {
     if (!window.confirm("Are you sure you want to delete this customer's subscription?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/subscriptions/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete service request");
     } catch (err) {
@@ -268,7 +271,7 @@ const Subscriptions = () => {
 
                         try {
                           await fetch(
-                            `http://localhost:5000/togglesubscriptions/${item._id}`,
+                            `${import.meta.env.VITE_API_URL_PRODUCTION}/api/togglesubscriptions/${item._id}`,
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },

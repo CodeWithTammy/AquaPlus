@@ -1,4 +1,6 @@
 import React from 'react'
+import dotenv from 'dotenv';
+dotenv.config();
 import { useEffect, useState } from 'react'
 import RentalCard from '../ReuseableComponents/RentalCard'
 import Navbar from '../HomePage/Navbar'
@@ -15,7 +17,7 @@ const RentalHomePage = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/rentals')
+        fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals`)
         .then(res => res.json())
         .then(data => setProducts(data))
         .catch(err => console.error("Error fetching rentals:", err));
@@ -30,8 +32,8 @@ const RentalHomePage = () => {
         title="AquaCare Plus Pools Rentals - Rent Pool Equipment & Tools"
         description="Affordable pool equipment rentals including vacuums, pumps, and maintenance tools. AquaCare Plus Pools makes pool care easy."
         keywords="pool rentals, pool equipment rental, pool tools rental"
-        url="https://www.yourdomain.com/Rentals"
-        image="https://www.yourdomain.com/images/about2.jpg"
+        url="https://www.aquacarepluspoolsja.com/Rentals"
+        image="https://www.aquacarepluspoolsja.com/images/about2.jpg"
       />
     
  

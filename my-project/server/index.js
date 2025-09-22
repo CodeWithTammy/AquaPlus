@@ -30,6 +30,8 @@ import {
   rentalStatusReturnedEmail,
 } from "./emailservice/emailservice.js";
 import { body, param, validationResult } from "express-validator";
+import path from "path";
+import { fileURLToPath } from 'url';
 
 
 
@@ -53,6 +55,37 @@ app.use(
 app.use(express.json());
 app.use(helmet()); // security headers
 
+
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", "https://res.cloudinary.com", "data:"],
+      scriptSrc: ["'self'", "https://apis.google.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+      mediaSrc: ["'self'", "https://res.cloudinary.com"],
+      connectSrc: [
+        "'self'",
+        "https://identitytoolkit.googleapis.com",
+        "https://firestore.googleapis.com", // if you use Firestore
+        "https://firebase.googleapis.com"   // general Firebase API
+      ],
+      objectSrc: ["'none'"],
+      frameSrc: ["'self'", "https://aquacareplus-4112b.firebaseapp.com"],
+    },
+  })
+);
+
+
+// Convert ES module URL to __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve React build for all other routes
+app.use(express.static(path.join(__dirname, "../dist")));
+
 // Rate limiter specifically for POST routes
 const postLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -60,7 +93,6 @@ const postLimiter = rateLimit({
   message: { error: "Too many requests, please try again later." },
 });
 
-// app.use("/adminsignin", loginLimiter);
 
 // Cloudinary storage
 const storage = new CloudinaryStorage({
@@ -119,13 +151,11 @@ const watchRequests = () => {
 };
 watchRequests();
 
-// Routes
-// app.use("/", authRoutes); // login/logout
 
 // --------ROUTES-----------
 // -------GET SERVICES----------
 //tested
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   try {
     const services = await Service.find();
     res.json(services);
@@ -137,7 +167,7 @@ app.get("/", async (req, res) => {
 // --------------GET SERVICES BY ID-----------------
 //tested
 app.get(
-  "/services/:title",
+  "/api/services/:title",
   [
     param("title")
       .trim()
@@ -174,7 +204,7 @@ app.get(
 
 // --------------GET RENTALS--------------
 //tested
-app.get("/rentals", async (req, res) => {
+app.get("/api/rentals", async (req, res) => {
   try {
     const rentals = await Rental.find();
     res.json(rentals);
@@ -188,7 +218,7 @@ app.get("/rentals", async (req, res) => {
 //Tested
 // Protected & validated rental creation
 app.post(
-  "/rentals",
+  "/api/rentals",
   upload.single("image"),
   [
     body("name").trim().notEmpty().escape().withMessage("Name is required"),
@@ -231,7 +261,7 @@ app.post(
 //----------DELETE RENTAL--------------
 //Tested
 app.delete(
-  "/rentals/:id",
+  "/api/rentals/:id",
   [param("id").isMongoId().withMessage("Invalid rental ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -251,7 +281,7 @@ app.delete(
 
 //----------------------GET RENTAL REQUEST-----------------
 // tested
-app.get("/rentalrequest", async (req, res) => {
+app.get("/api/rentalrequest", async (req, res) => {
   try {
     const rentalRequests = await RentalRequest.find();
     res.json(rentalRequests);
@@ -264,7 +294,7 @@ app.get("/rentalrequest", async (req, res) => {
 // -----------------GET RENTAL REQUEST BY ID----------------
 //tested
 app.get(
-  "/rentalrequest/:id",
+  "/api/rentalrequest/:id",
   [param("id").isMongoId().withMessage("Invalid rental request ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -285,7 +315,7 @@ app.get(
 // ------------POST USER RENTAL REQUEST------------------------
 //tested
 app.post(
-  "/rentalrequest",
+  "/api/rentalrequest",
 [
     body("tool").trim().escape(),
     body("price").isFloat({ min: 0 }).withMessage("Price must be a positive number"),
@@ -323,7 +353,7 @@ app.post(
 
 //------------DELETE RENTAL REQUEST----------
 app.delete(
-  "/rentalrequest/:id",
+  "/api/rentalrequest/:id",
   [param("id").isMongoId().withMessage("Invalid rental request ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -344,7 +374,7 @@ app.delete(
 // tested
 
 app.patch(
-  "/rentalrequest/:id",
+  "/api/rentalrequest/:id",
   [
     body("status")
       .trim()
@@ -370,7 +400,7 @@ app.patch(
 );
 //----------DELETE RENTAL REQUEST--------------
 app.delete(
-  "/rentalrequest/:id",
+  "/api/rentalrequest/:id",
   [param("id").isMongoId().withMessage("Invalid service request ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -390,7 +420,7 @@ app.delete(
 
 //------------Toggle RENT STATUS-----------
 app.post(
-  "/toggleRent/:id",
+  "/api/toggleRent/:id",
   [
     param("id").isMongoId().withMessage("Invalid rental request ID"),
     body("rentStatus").trim().escape(),
@@ -442,7 +472,7 @@ app.post(
 // ---------------POST USER SERVICE REQUEST---------------
 // tested
 app.post(
-  "/requestservices",
+  "/api/requestservices",
    [
     body("full_name")
       .trim()
@@ -500,7 +530,7 @@ body("time")
 
 // ---------GET SERVICE REQUESTS---------------
 //tested
-app.get("/requestservices", async (req, res) => {
+app.get("/api/requestservices", async (req, res) => {
   try {
     const requests = await RequestService.find();
     res.json(requests.map(r => r.toJSON()));
@@ -513,7 +543,7 @@ app.get("/requestservices", async (req, res) => {
 // ------------------GET SERVICE REQUEST BY ID-------------------
 //tested
 app.get(
-  "/requestservices/:id",
+  "/api/requestservices/:id",
   [param("id").isMongoId().withMessage("Invalid request ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -532,7 +562,7 @@ app.get(
 // ----------------SEND UPDATE TO REQUEST SERVICES----------------
 //tested
 app.patch(
-  "/requestservices/:id",
+  "/api/requestservices/:id",
   [
     param("id").isMongoId().withMessage("Invalid request ID"),
     body("status").trim().escape(),
@@ -561,7 +591,7 @@ app.patch(
 //-------------------Subscriptions---------------------
 // ----------------GET USER SUBSCRIPTIONS----------------
 //tested
-app.get("/subscriptions", async (req, res) => {
+app.get("/api/subscriptions", async (req, res) => {
   try {
     const subscriptions = await CustomerPackage.find();
     res.json(subscriptions);
@@ -573,7 +603,7 @@ app.get("/subscriptions", async (req, res) => {
 // --------------------GET USER SUBSCRIPTIONS BY ID----------------------
 //tested
 app.get(
-  "/subscriptions/:id",
+  "/api/subscriptions/:id",
   [param("id").isMongoId().withMessage("Invalid subscription ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -593,7 +623,7 @@ app.get(
 // ---------------POST USER SUBSCRIPTIONS----------------
 //tested
 app.post(
-  "/subscriptions",
+  "/api/subscriptions",
   [
     body("name").trim().notEmpty().withMessage("Name is required"),
     body("email").isEmail().withMessage("Valid email is required").normalizeEmail(),
@@ -642,7 +672,7 @@ app.post(
 );
 
 app.delete(
-  "/subscriptions/:id",
+  "/api/subscriptions/:id",
   [param("id").isMongoId().withMessage("Invalid subscription ID")],
   async (req, res) => {
     const errors = validationResult(req);
@@ -664,7 +694,7 @@ app.delete(
 //tested
 // -----------------SEND UPDATE FOR USER---------------
 app.patch(
-  "/subscriptions/:id",
+  "/api/subscriptions/:id",
   [
     param("id").isMongoId().withMessage("Invalid subscription ID"),
     body("status").optional().trim().escape(),
@@ -703,7 +733,7 @@ app.patch(
 // ------------POST UPDATE AND SEND EMAIL----------------
 //tested
 app.post(
-  "/togglesubscriptions/:id",
+  "/api/togglesubscriptions/:id",
   [
     param("id").isMongoId().withMessage("Invalid subscription ID"),
     body("planactive").trim().escape(),
@@ -747,7 +777,7 @@ app.post(
 
 //-------------Contact---------------- (public)
 app.post(
-  "/contact",
+  "/api/contact",
   [
     body("firstName").trim().escape(),
     body("lastName").trim().escape(),
@@ -778,6 +808,12 @@ io.on("connection", (socket) => {
   });
 });
 
+
+app.get("*", (req, res) => {
+  // For SPA routing, serve index.html
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
+
 //  Start server
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

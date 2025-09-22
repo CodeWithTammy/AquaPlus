@@ -24,8 +24,8 @@ const PricingHome = () => {
         title="AquaCare Plus Pools Packages - Affordable Pool Care Plans"
         description="Choose from our pool cleaning packages: Starter, Standard, and Premium. Find the perfect plan for your pool care needs."
         keywords="pool packages, pool cleaning plans, AquaCare Plus Pools packages"
-        url="https://www.yourdomain.com/Pricing"
-        image="https://www.yourdomain.com/images/packages-preview.jpg"
+        url="https://www.aquacarepluspoolsja.com/Pricing"
+        image="https://www.aquacarepluspoolsja.com/images/packages-preview.jpg"
       />
 
       {/* Navbar */}

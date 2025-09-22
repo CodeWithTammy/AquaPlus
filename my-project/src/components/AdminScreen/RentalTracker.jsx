@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import ViewDetailsCard from "../ReuseableComponents/ViewDetailsCard";
@@ -44,7 +47,7 @@ const RentalTracker = () => {
     const socket = io("http://localhost:5000");
 
     // Initial fetch of existing rental requests
-    fetch("http://localhost:5000/rentalrequest")
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`)
       .then((res) => res.json())
       .then((data) => setRequest(data))
       .catch((err) => console.error("Error fetching requests:", err));
@@ -76,7 +79,7 @@ const RentalTracker = () => {
     const newStatus = updated.status === "Pending" ? "Completed" : "Pending";
 
     try {
-      await fetch(`http://localhost:5000/rentalrequest/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -105,7 +108,7 @@ const RentalTracker = () => {
     if (!window.confirm("Are you sure you want to delete this rental?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/rentals/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/rentals/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete rental");
     } catch (err) {
@@ -237,7 +240,7 @@ const RentalTracker = () => {
 
                         try {
                           await fetch(
-                            `http://localhost:5000/toggleRent/${item._id}`,
+                            `${import.meta.env.VITE_API_URL_PRODUCTION}api/toggleRent/${item._id}`,
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },

@@ -17,8 +17,8 @@ const ContactPage = () => {
         title="Contact AquaCare Plus Pools - Get in Touch"
         description="Contact AquaCare Plus Pools for pool cleaning, rentals, or service bookings. Reach us by phone, email, or our online form."
         keywords="contact AquaCare Plus Pools, pool service contact, pool cleaning contact"
-        url="https://www.yourdomain.com/Contact-Us"
-        image="https://www.yourdomain.com/images/logo.png"
+        url="https://www.aquacarepluspoolsja.com/Contact-Us"
+        image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
 
         <Navbar/>
