@@ -14,28 +14,40 @@ const Footer = () => {
     <>
     <div className='w-full h-full bg-white text-white py-38 lg:py-48 p-3 lg:p-20'>
         {/* Container */}
-        <div className='overflow-hidden flex flex-col lg:flex-row h-[35vh] lg:h-[35vh] justify-center 
-        bg-gradient-to-r from-primary via-primary-300 to-secondbasecolor rounded-3xl shadow-lg'>
+<div className='overflow-hidden flex flex-col lg:flex-row h-auto lg:h-[35vh] justify-center 
+    bg-gradient-to-r from-primary via-primary-300 to-secondbasecolor rounded-3xl shadow-lg p-6 md:p-10'>
 
-            {/* Text */}
-        <div className='flex flex-col text-center gap-4 md:text-center justify-center lg:items-start lg:px-10 lg:text-left lg:gap-2'>
-            <h1 className='text-5xl font-200 font-sans'>Contact Us for Pool Servicing</h1>
-            <p className='mb-8'>Experienced technicians ready to change your swimming experience</p>
+  {/* Text */}
+  <div className='flex flex-col text-center gap-4 justify-center lg:items-start lg:px-4 lg:text-left lg:gap-2'>
+    <h1 className='text-3xl sm:text-4xl md:text-5xl font-200 font-sans'>
+      Contact Us for Pool Servicing
+    </h1>
+    <p className='mb-4 sm:mb-6 text-sm sm:text-base md:text-lg'>
+      Experienced technicians ready to change your swimming experience
+    </p>
 
-            {/* Buttons */}
-            <div className='flex flex-row gap-10 justify-center items-center lg:justify-start lg:items-start'>
-              <Link to="/Contact-Us">
-            <button className='bg-white w-40 h-10 rounded-full text-primary text-center 
-            hover:bg-basecolor hover:text-white transition duration-300'>Contact Us</button>
-            </Link>
-            <Link to="/Services" className='text-center border-2 p-2 rounded-full hover:bg-white hover:text-primary lg:text-left'>
-            Request Service <GoArrowUpRight className='inline-block hover:text-primary lg:text-white'/></Link>
-            </div>
-        </div>
-        {/* Image */}
-      
-        <img src={Worker} alt="Worker" className='hidden w-80 h-auto md:w-96 object-cover lg:block lg:translate-x-24 lg:translate-y-[-10%] lg:h-96' />
-        </div>
+    {/* Buttons */}
+    <div className='flex flex-col sm:flex-row gap-4 sm:gap-2 justify-center items-center lg:justify-start'>
+      <Link to="/Contact-Us">
+        <button className='bg-white w-36 sm:w-32 h-10 rounded-full text-primary text-center 
+          hover:bg-basecolor hover:text-white transition duration-300'>
+          Contact Us
+        </button>
+      </Link>
+      <Link to="/Services" className='text-center border-2 p-2 rounded-full hover:bg-white hover:text-primary'>
+        Request Service <GoArrowUpRight className='inline-block' />
+      </Link>
+    </div>
+  </div>
+
+  {/* Image - only show on large screens */}
+  <img 
+    src={Worker} 
+    alt="Worker" 
+    className='hidden lg:block w-80 h-auto object-cover lg:translate-x-24 lg:translate-y-[-10%]' 
+  />
+</div>
+
 
 
 
@@ -48,27 +60,27 @@ const Footer = () => {
               <div className="flex flex-row justify-center items-center">
                           <a
                                       href="https://www.instagram.com/aquacarepluspools?igsh=cHJtYjg1aXBrMnk0" target="_blank"
-                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                      className="text-primary text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
                                     >
-                                      <RxInstagramLogo className="text-3xl" />
+                                      <RxInstagramLogo className="text-xl" />
                                     </a>
                                     <a
                                       href="https://www.facebook.com/share/r/19po57FJR1/?mibextid=wwXIfr" target="_blank"
-                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                      className="text-primary text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
                                     >
-                                      <FaFacebookF className="text-3xl" />
+                                      <FaFacebookF className="text-xl" />
                                     </a>
                                     <a
                                       href="https://www.tiktok.com/@aquacareplus.ltd?_t=ZM-8ztz0jVbGjz&_r=1" target="_blank"
-                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                      className="text-primary text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
                                     >
-                                      <FaTiktok className="text-3xl" />
+                                      <FaTiktok className="text-xl" />
                                     </a>
                                     <a
                                       href="https://www.linkedin.com/in/aqua-careplus-a12156334/?originalSubdomain=jm" target="_blank"
-                                      className="text-white text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
+                                      className="text-primary text-2xl flex items-center justify-center w-12 h-12 border-2 border-white rounded-full hover:bg-white hover:text-black transition duration-300"
                                     >
-                                      <FaLinkedinIn className="text-3xl" />
+                                      <FaLinkedinIn className="text-xl" />
                                     </a>
                       </div>
         </div>

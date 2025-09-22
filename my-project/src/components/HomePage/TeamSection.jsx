@@ -3,21 +3,9 @@ import { motion as Motion } from "framer-motion";
 
 const TeamSection = () => {
   const members = [
-    {
-      name: "Tyreece Morris",
-      role: "CEO / Project Manager",
-      img: "/images/john doe.jpg",
-    },
-    {
-      name: "Javan Thompson",
-      role: "COO / Technician",
-      img: "/images/john doe.jpg",
-    },
-    {
-      name: "Bridgette Morris",
-      role: "Secretary",
-      img: "/images/john doe.jpg",
-    },
+    { name: "Tyreece Morris", role: "CEO / Project Manager", img: "/images/john doe.jpg" },
+    { name: "Javan Thompson", role: "COO / Technician", img: "/images/john doe.jpg" },
+    { name: "Bridgette Morris", role: "Secretary", img: "/images/john doe.jpg" },
   ];
 
   return (
@@ -29,7 +17,6 @@ const TeamSection = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         <section className="text-center py-16 bg-white">
-          {/* Section Header */}
           <p className="text-secondbasecolor font-semibold mt-20">
             <span className="inline-block w-1 h-3 bg-secondbasecolor mr-2"></span> Team Members
           </p>
@@ -38,7 +25,7 @@ const TeamSection = () => {
           </h2>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-16 justify-items-center">
             {members.map((member, index) => (
               <div key={index} className="flex flex-col justify-center items-center">
                 <img
