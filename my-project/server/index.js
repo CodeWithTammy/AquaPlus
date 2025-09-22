@@ -62,21 +62,27 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       imgSrc: ["'self'", "https://res.cloudinary.com", "data:"],
-      scriptSrc: ["'self'", 
-        "https://apis.google.com", 
-        "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
-      "https://chimpstatic.com"
-    ],
+      scriptSrc: [
+  "'self'",
+  "https://apis.google.com",
+  "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
+  "https://chimpstatic.com",
+  "https://form-assets.mailchimp.com",
+  "https://*.list-manage.com"   // 👈 Mailchimp forms and tracking
+],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
       mediaSrc: ["'self'", "https://res.cloudinary.com"],
-      connectSrc: [
-        "'self'",
-         "http://localhost:5000",
-        "https://identitytoolkit.googleapis.com",
-        "https://firestore.googleapis.com", // if you use Firestore
-        "https://firebase.googleapis.com"   // general Firebase API
-      ],
+     connectSrc: [
+  "'self'",
+  "http://localhost:5000",
+  "https://identitytoolkit.googleapis.com",
+  "https://firestore.googleapis.com",
+  "https://firebase.googleapis.com",
+  "https://chimpstatic.com",
+  "https://form-assets.mailchimp.com",
+  "https://*.list-manage.com"
+],
       objectSrc: ["'none'"],
       frameSrc: ["'self'", "https://aquacareplus-4112b.firebaseapp.com"],
     },
