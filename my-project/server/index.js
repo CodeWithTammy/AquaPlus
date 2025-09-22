@@ -69,6 +69,7 @@ app.use(
       connectSrc: [
         "'self'",
          "http://localhost:5000",
+         "https://apis.google.com",
         "https://identitytoolkit.googleapis.com",
         "https://firestore.googleapis.com", // if you use Firestore
         "https://firebase.googleapis.com"   // general Firebase API
