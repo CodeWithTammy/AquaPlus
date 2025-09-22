@@ -11,7 +11,9 @@ const OurStorySection = () => {
         viewport={{ once: true, amount: 0.3 }}
       >
         {/* About us section */}
-        <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 md:px-12 lg:px-20 mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10">
+        <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 md:px-12 lg:px-20 mx-auto 
+  flex flex-col justify-center lg:flex-row items-center gap-8 sm:gap-10 lg:gap-16">
+
           {/* Text Content */}
           <div className="max-w-full sm:max-w-xl text-center lg:text-left">
             <span className="inline-block text-center lg:text-left bg-blue-100 text-blue-600 font-medium px-4 py-1 rounded-full mb-4">
