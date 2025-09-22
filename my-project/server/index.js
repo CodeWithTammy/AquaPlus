@@ -61,7 +61,12 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https://res.cloudinary.com", "data:"],
+      imgSrc: [
+        "'self'",
+        "https://res.cloudinary.com",
+        "https://form-assets.mailchimp.com",
+        "data:"
+      ],
       scriptSrc: [
   "'self'",
   "https://apis.google.com",
@@ -81,7 +86,9 @@ app.use(
   "https://firebase.googleapis.com",
   "https://chimpstatic.com",
   "https://form-assets.mailchimp.com",
-  "https://*.list-manage.com"
+  "https://*.list-manage.com",
+  "https://eventcollector.mcf-prod.a.intuit.com",
+        "https://*.execute-api.us-east-2.amazonaws.com"
 ],
       objectSrc: ["'none'"],
       frameSrc: ["'self'", "https://aquacareplus-4112b.firebaseapp.com"],
