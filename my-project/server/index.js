@@ -68,6 +68,7 @@ app.use(
       mediaSrc: ["'self'", "https://res.cloudinary.com"],
       connectSrc: [
         "'self'",
+         "http://localhost:5000",
         "https://identitytoolkit.googleapis.com",
         "https://firestore.googleapis.com", // if you use Firestore
         "https://firebase.googleapis.com"   // general Firebase API
