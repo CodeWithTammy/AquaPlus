@@ -107,7 +107,7 @@ const RentalTracker = () => {
     if (!window.confirm("Are you sure you want to delete this rental?")) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/rentals/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete rental");
     } catch (err) {
@@ -239,7 +239,7 @@ const RentalTracker = () => {
 
                         try {
                           await fetch(
-                            `${import.meta.env.VITE_API_URL_PRODUCTION}api/toggleRent/${item._id}`,
+                            `${import.meta.env.VITE_API_URL_PRODUCTION}/api/toggleRent/${item._id}`,
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
