@@ -128,7 +128,7 @@ const upload = multer({ storage });
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://aquacare-plus-pools.onrender.com",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
