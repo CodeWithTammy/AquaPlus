@@ -5,6 +5,7 @@ import ListOfServices from './ListOfServices'
 import ServicesIntro from './ServicesIntro'
 import Footer from '../HomePage/Footer'
 import QuotesSection from '../HomePage/RequestSection'
+import SEO from "../SEO";
 
 const Services = () => {
   return (
