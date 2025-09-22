@@ -80,7 +80,7 @@ app.use(
       mediaSrc: ["'self'", "https://res.cloudinary.com"],
      connectSrc: [
         "'self'",
-        "http://localhost:5000",
+        "https://aquacare-plus-pools.onrender.com",
         "https://identitytoolkit.googleapis.com",
         "https://firestore.googleapis.com",
         "https://firebase.googleapis.com",
