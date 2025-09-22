@@ -62,7 +62,11 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       imgSrc: ["'self'", "https://res.cloudinary.com", "data:"],
-      scriptSrc: ["'self'", "https://apis.google.com", "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='"],
+      scriptSrc: ["'self'", 
+        "https://apis.google.com", 
+        "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
+      "https://chimpstatic.com"
+    ],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
       mediaSrc: ["'self'", "https://res.cloudinary.com"],
