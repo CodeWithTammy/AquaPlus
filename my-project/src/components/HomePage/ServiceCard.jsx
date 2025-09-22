@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ServiceCard = ({ title, svg, description, image }) => {
   return (
     // Card container with shadow and rounded corners
-    <div className="max-w-sm h-[55vh] lg:h-[65vh] rounded-2xl overflow-hidden shadow-lg bg-white mb-8 mr-2">
+    <div className="max-w-sm h-[55vh] sm:h-[65vh] lg:h-[65vh] rounded-2xl overflow-hidden shadow-lg bg-white mb-8 mr-2">
       <div className="relative">
         {/* Main image */}
         <img className="w-full h-64 object-cover" src={image} alt={title} />
