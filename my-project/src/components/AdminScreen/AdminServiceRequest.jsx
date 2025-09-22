@@ -53,7 +53,7 @@ const AdminServiceRequest = () => {
     const socket = io("http://localhost:5000");
 
     // Initial fetch of all service requests
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/requestservices`)
+    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices`)
       .then((res) => res.json())
       .then((data) => setRequest(data))
       .catch((err) => console.error("Error fetching requests:", err));
@@ -88,7 +88,7 @@ const AdminServiceRequest = () => {
     const newStatus = updated.status === "Pending" ? "Completed" : "Pending";
 
     try {
-      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/requestservices/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -117,7 +117,7 @@ const AdminServiceRequest = () => {
     if (!window.confirm("Are you sure you want to delete this service request?")) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}api/requestservices/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete service request");
     } catch (err) {
