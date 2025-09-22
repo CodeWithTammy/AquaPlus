@@ -1,6 +1,5 @@
 import React from 'react'
-import dotenv from 'dotenv';
-dotenv.config();
+
 import Servicebg from "/images/servicebg.png"
 import ServiceCard from './ServiceCard'
 import { useEffect, useState } from 'react';

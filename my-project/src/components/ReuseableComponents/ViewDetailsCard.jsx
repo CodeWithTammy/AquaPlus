@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 const ViewDetailsCard = ({ customerId, type, onClose }) => {
   const [customer, setCustomer] = useState(null);

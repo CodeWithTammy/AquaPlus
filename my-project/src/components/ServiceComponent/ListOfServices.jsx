@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
+
 import Cards from "../ReuseableComponents/Cards";
 import { motion as Motion } from "framer-motion";
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
+
 import { useParams } from "react-router-dom";
 import Navbar from "../HomePage/Navbar";
 import Banner from "../ReuseableComponents/BannerSection";

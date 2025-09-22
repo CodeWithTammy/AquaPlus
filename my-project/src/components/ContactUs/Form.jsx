@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
 
 import React, { useState } from 'react';
 import { Building2, MapPin, Phone, Mail } from "lucide-react";

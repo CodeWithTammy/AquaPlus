@@ -1,7 +1,6 @@
 // RentalPopup.jsx
 import { useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
+
 import Swal from "sweetalert2";
 
 export default function RentalForm({ tool, price, isOpen, onClose }) {

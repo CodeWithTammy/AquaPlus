@@ -1,7 +1,6 @@
 // Subscription form component
 import React, { useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
+
 import Swal from "sweetalert2";
 
 const PricingForm = ({ plan, onClose }) => {

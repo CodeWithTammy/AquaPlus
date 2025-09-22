@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 import RentalForm from '../ReuseableComponents/RentalForm'
 
