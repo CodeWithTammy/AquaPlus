@@ -47,7 +47,10 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "https://aquacare-plus-pools.onrender.com", // frontend URL
+    origin:[ "https://aquacare-plus-pools.onrender.com", 
+    "https://aquacarepluspoolsja.com",
+    "https://www.aquacarepluspoolsja.com",
+    ],// frontend URL
     credentials: true,
   })
 );
