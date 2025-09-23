@@ -38,6 +38,15 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
 
+   Swal.fire({
+    title: "Submitting Request...",
+    text: "Please wait while we send your request.",
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+
   try {
     // Date from <input type="date"> is already YYYY-MM-DD
     const formattedDate = formData.date;
@@ -53,7 +62,7 @@ const handleSubmit = async (e) => {
       }),
     });
 
-    if (response.ok) {
+   if (response.ok) {
       Swal.fire({
         title: "Request Submitted!",
         text: "Please check your email for confirmation. We will contact you within 24 hours.",
@@ -63,7 +72,6 @@ const handleSubmit = async (e) => {
           confirmButton: "bg-primary text-white font-semibold hover:bg-red",
         },
       });
-
       // Reset form
       setFormData({
         full_name: "",

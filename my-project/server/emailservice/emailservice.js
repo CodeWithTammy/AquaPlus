@@ -21,6 +21,13 @@ dotenv.config();
   },
   });
 
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("Email server error:", error);
+  } else {
+    console.log("Server is ready to take our messages:", success);
+  }
+});
 
 
 //Email that is sent to the company's email for service request
