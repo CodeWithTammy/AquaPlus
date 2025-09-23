@@ -274,7 +274,7 @@ const ServiceDetails = () => {
                     Why Choose This Service
                   </h2>
 
-                  <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     {detail.whythisservice?.map((item, idx) => (
                       <div
                         key={idx}

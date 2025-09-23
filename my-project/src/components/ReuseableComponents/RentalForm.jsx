@@ -27,7 +27,15 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
 
     const rentalData = { tool, price, ...formData, total };
     
-    console.log("Sending rentalData:", rentalData);
+    // console.log("Sending rentalData:", rentalData);
+     Swal.fire({
+        title: "Submitting Request...",
+        text: "Please wait while we send your request.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`, {

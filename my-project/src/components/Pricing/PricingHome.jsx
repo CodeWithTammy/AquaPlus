@@ -14,6 +14,10 @@ const faqs = [
   { q: "Can I cancel anytime?", a: "Yes, you may cancel your subscription at any time in accordance with your contract terms." },
   { q: "Do you offer customer support?", a: "Absolutely! Our support team is available 24/7." },
   { q: "Do you offer loyalty discounts or referral programs?", a: "Yes, we value our customers and offer exclusive loyalty discounts as well as referral incentives. Please contact us for details on how you can benefit." },
+  { q: "What is the frequency of the starter package?", a: "We will be onsite one time per week during any particular month." },
+  { q: "What is the frequency of the premium package?", a: "There is no set frequency. Our team will visit during working hours, up to 5 times per week."},
+  { q: "Do the above packages include the purchase of chemicals?", a: "No, chemicals are not included in the packages. Any chemicals needed will be billed separately and are the client’s responsibility. If you’d like us to handle the purchase of new chemicals, just let us know." },
+
 ];
 
 const PricingHome = () => {

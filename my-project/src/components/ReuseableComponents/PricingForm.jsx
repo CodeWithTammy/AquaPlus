@@ -28,6 +28,15 @@ const PricingForm = ({ plan, onClose }) => {
     e.preventDefault();
     setLoading(true);
 
+     Swal.fire({
+        title: "Submitting Request...",
+        text: "Please wait while we send your request.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions`, {
         method: "POST",
