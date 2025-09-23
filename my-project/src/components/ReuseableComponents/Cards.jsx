@@ -16,7 +16,7 @@ const Cards = ({ title, image, text, svg }) => {
 
       {/* Content section */}
       <div className="flex-1 text-center md:text-left">
-        <div className="flex justify-center sm:hidden md:justify-start mb-4">
+        <div className="flex justify-center  md:justify-start mb-4">
           <img className="w-16 h-16" src={svg} alt="" />
         </div>
         <h2 className="text-xl font-bold mb-4">{title}</h2>
