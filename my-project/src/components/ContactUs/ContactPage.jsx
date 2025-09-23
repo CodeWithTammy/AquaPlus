@@ -98,7 +98,7 @@ const ContactPage = () => {
        
          
            {/* Copyright section */}
-       <div className='bg-primary text-white text-center py-5 mx-0'>
+       <div className='bg-primary text-white text-center py-5 mx-0 sm:text-sm'>
        <p>Copyright © 2025 AquaCare Plus Pools. All rights reserved.</p>
        <p className='text-xs'>Designed and Developed by <a href="https://github.com/CodeWithTammy" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
 
