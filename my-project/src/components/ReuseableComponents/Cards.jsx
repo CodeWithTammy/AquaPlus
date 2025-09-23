@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Cards = ({ title, image, text, svg }) => {
   return (
-    <div className="block bg-white shadow-lg rounded-lg h-auto p-4 flex flex-col md:flex-row gap-6 items-center">
+    <div className="bg-white shadow-lg rounded-2xl p-4 flex flex-col md:flex-row gap-4 md:gap-6 w-full max-w-xl mx-auto">
       
       {/* Image section */}
-      <div className="w-full md:w-1/3 flex justify-center">
+      <div className="w-full md:w-1/3 flex justify-center md:justify-start mb-4 md:mb-0">
         <img 
           src={image} 
           alt={title} 
@@ -15,15 +15,20 @@ const Cards = ({ title, image, text, svg }) => {
       </div>
 
       {/* Content section */}
-      <div className="flex-1 text-center md:text-left">
-        <div className="flex justify-center sm:hidden md:justify-start mb-4">
-          <img className="w-16 h-16" src={svg} alt="" />
-        </div>
-        <h2 className="text-xl font-bold mb-4">{title}</h2>
-        <p className="text-gray-700 mb-6">{text}</p>
+      <div className="flex-1 flex flex-col justify-center text-center md:text-left">
+        {/* SVG icon */}
+        {svg && (
+          <div className="flex justify-center md:justify-start mb-4">
+            <img className="w-16 h-16" src={svg} alt="" />
+          </div>
+        )}
+
+        <h2 className="text-xl sm:text-2xl font-bold mb-2 md:mb-4">{title}</h2>
+        <p className="text-gray-700 mb-4 md:mb-6">{text}</p>
+        
         <Link 
           to={`/Services/${title}`} 
-          className="border-2 p-3 rounded-lg text-primary hover:bg-red hover:text-white"
+          className="border-2 border-primary p-3 rounded-lg text-primary hover:bg-red-500 hover:text-white transition"
         >
           Read More
         </Link>
