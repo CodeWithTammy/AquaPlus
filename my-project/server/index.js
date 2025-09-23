@@ -112,6 +112,9 @@ const __dirname = path.dirname(__filename);
 // Serve React build for all other routes
 app.use(express.static(path.join(__dirname, "../dist")));
 
+
+app.set('trust proxy', 1); // 1 means trust first proxy
+
 // Rate limiter specifically for POST routes
 const postLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
