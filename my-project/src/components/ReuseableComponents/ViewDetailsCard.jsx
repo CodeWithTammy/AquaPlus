@@ -80,6 +80,7 @@ const ViewDetailsCard = ({ customerId, type, onClose }) => {
                 <h2 className="text-2xl font-bold mb-4">{customer.name}</h2>
                 <p><strong>Phone:</strong> {customer.phone}</p>
                 <p><strong>Address:</strong> {customer.address}</p>
+                <p><strong>Address:</strong> {customer.email}</p>
                 <p><strong>Type of Equipment:</strong> {customer.tool}</p>
                 <p><strong>Price:</strong> {customer.price}</p>
                 <p><strong>Start Date:</strong> {new Date(customer.startDate).toLocaleDateString()}</p>
