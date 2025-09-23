@@ -51,7 +51,7 @@ const Subscriptions = () => {
 
   // Fetch initial requests
   useEffect(() => {
-    const socket = io("https://aquacare-plus-pools.onrender.com");
+    const socket = io("https://aquacarepluspoolsja.com");
 
     fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions`)
       .then((res) => res.json())

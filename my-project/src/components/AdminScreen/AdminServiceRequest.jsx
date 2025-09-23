@@ -50,7 +50,7 @@ const AdminServiceRequest = () => {
 
   // ------------------ Fetch data and set up socket ------------------
   useEffect(() => {
-    const socket = io("https://aquacare-plus-pools.onrender.com");
+    const socket = io("https://aquacarepluspoolsja.com");
 
     // Initial fetch of all service requests
     fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices`)

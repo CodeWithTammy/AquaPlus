@@ -37,7 +37,7 @@ const RentalProducts = () => {
 
   // Fetch rentals
   useEffect(() => {
-    const socket = io("https://aquacare-plus-pools.onrender.com");
+    const socket = io("https://aquacarepluspoolsja.com");
 
     fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals`)
       .then((res) => res.json())

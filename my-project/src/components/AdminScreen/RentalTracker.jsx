@@ -43,7 +43,7 @@ const RentalTracker = () => {
 
   // Fetch initial requests and set up socket
   useEffect(() => {
-    const socket = io("https://aquacare-plus-pools.onrender.com");
+    const socket = io("https://aquacarepluspoolsja.com");
 
     // Initial fetch of existing rental requests
     fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`)

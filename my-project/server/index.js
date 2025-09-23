@@ -84,6 +84,8 @@ app.use(
      connectSrc: [
         "'self'",
         "https://aquacare-plus-pools.onrender.com",
+        "https://aquacarepluspoolsja.com",
+        "https://www.aquacarepluspoolsja.com",
         "https://identitytoolkit.googleapis.com",
         "https://firestore.googleapis.com",
         "https://firebase.googleapis.com",
@@ -131,7 +133,9 @@ const upload = multer({ storage });
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://aquacare-plus-pools.onrender.com",
+    origin: ["https://aquacare-plus-pools.onrender.com",
+    "https://aquacarepluspoolsja.com",
+    "https://www.aquacarepluspoolsja.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
