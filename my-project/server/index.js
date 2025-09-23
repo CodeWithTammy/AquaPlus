@@ -49,7 +49,7 @@ app.use(
   cors({
     origin:[ "https://aquacare-plus-pools.onrender.com", 
     "https://aquacarepluspoolsja.com",
-    "https://www.aquacarepluspoolsja.com",
+    // "https://www.aquacarepluspoolsja.com",
     ],// frontend URL
     credentials: true,
   })
@@ -85,7 +85,7 @@ app.use(
         "'self'",
         "https://aquacare-plus-pools.onrender.com",
         "https://aquacarepluspoolsja.com",
-        "https://www.aquacarepluspoolsja.com",
+        // "https://www.aquacarepluspoolsja.com",
         "https://identitytoolkit.googleapis.com",
         "https://firestore.googleapis.com",
         "https://firebase.googleapis.com",
