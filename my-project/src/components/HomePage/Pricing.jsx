@@ -42,7 +42,7 @@ export function PricingSection() {
           ))}
         </div>
         <Typography variant="small" className="mt-10 font-normal !text-gray-500">
-          100% Maintenance Money Back Guarantee if you’re unsatisfied. You also have 30 days to request a refund.
+          100% Maintenance Money Back Guarantee if you’re unsatisfied. 
         </Typography>
       </div>
       {/* CTA Section */}
