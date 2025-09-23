@@ -378,25 +378,7 @@ app.post(
   }
 );
 
-//------------DELETE RENTAL REQUEST----------
-app.delete(
-  "/api/rentalrequest/:id",
-  [param("id").isMongoId().withMessage("Invalid rental request ID")],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty())
-      return res.status(400).json({ errors: errors.array() });
 
-    try {
-      const rentalrequest = await RentalRequest.findByIdAndDelete(req.params.id);
-      if (!rentalrequest) return res.status(404).json({ error: "Rental request not found" });
-      res.json({ message: "Rental request deleted successfully", id: req.params.id });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "Failed to delete rental request" });
-    }
-  }
-);
 //-------------SEND UPDATE ON RENTAL REQUEST--------------
 // tested
 
@@ -613,6 +595,25 @@ app.patch(
   }
 );
 
+// --------------------DELETE SERVICE REQUEST---------------------
+app.delete(
+  "/api/requestservices/:id",
+  [param("id").isMongoId().withMessage("Invalid service request ID")],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const servicerequest = await RequestService.findByIdAndDelete(req.params.id);
+      if (!servicerequest) return res.status(404).json({ error: "Service request not found" });
+      res.json({ message: "Service request deleted successfully", id: req.params.id });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to delete service request" });
+    }
+  }
+);
 
 
 //-------------------Subscriptions---------------------
