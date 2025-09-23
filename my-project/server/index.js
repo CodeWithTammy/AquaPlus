@@ -95,6 +95,7 @@ app.use(
         "https://eventcollector.mcf-prod.a.intuit.com",
         "https://*.execute-api.us-east-2.amazonaws.com",
         "https://securetoken.googleapis.com",
+        "https://mcf-integrations-mcmktg.mlchmpcompprduse2.iks2.a.intuit.com"
 
 ],
       objectSrc: ["'none'"],
