@@ -135,7 +135,8 @@ const io = new Server(server, {
   cors: {
     origin: ["https://aquacare-plus-pools.onrender.com",
     "https://aquacarepluspoolsja.com",
-    "https://www.aquacarepluspoolsja.com"],
+    // "https://www.aquacarepluspoolsja.com"
+    ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   },
 });
