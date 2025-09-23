@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Cards = ({ title, image, text, svg }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg h-auto p-4 flex flex-col md:flex-row gap-6 items-center">
+    <div className="block bg-white shadow-lg rounded-lg h-auto p-4 flex flex-col md:flex-row gap-6 items-center">
       
       {/* Image section */}
       <div className="w-full md:w-1/3 flex justify-center">
@@ -16,7 +16,7 @@ const Cards = ({ title, image, text, svg }) => {
 
       {/* Content section */}
       <div className="flex-1 text-center md:text-left">
-        <div className="flex justify-center  md:justify-start mb-4">
+        <div className="flex justify-center sm:hidden md:justify-start mb-4">
           <img className="w-16 h-16" src={svg} alt="" />
         </div>
         <h2 className="text-xl font-bold mb-4">{title}</h2>
