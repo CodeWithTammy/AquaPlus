@@ -13,7 +13,7 @@ const Services = () => {
         <SEO
         title="AquaCare Plus Pools Services - Pool Cleaning & Maintenance"
         description="Explore AquaCare Plus Pools professional pool cleaning and maintenance services. Keep your pool sparkling all year long."
-        keywords="pool cleaning, pool maintenance, pool services, AquaCare Plus Pools services"
+        keywords="pool cleaning, pool maintenance, pool services, AquaCare Plus Pools services, pool service in Jamaica, pool company near me"
         url="https://www.aquacarepluspoolsja.com/Services"
         image="https://www.aquacarepluspoolsja.com/images/service2.jpg"
       />

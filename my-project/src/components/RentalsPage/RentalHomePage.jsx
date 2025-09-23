@@ -30,7 +30,7 @@ const RentalHomePage = () => {
       <SEO
         title="AquaCare Plus Pools Rentals - Rent Pool Equipment & Tools"
         description="Affordable pool equipment rentals including vacuums, pumps, and maintenance tools. AquaCare Plus Pools makes pool care easy."
-        keywords="pool rentals, pool equipment rental, pool tools rental"
+        keywords="pool rentals, pool equipment rental, pool tools rental, pool service in Jamaica, pool company near me"
         url="https://www.aquacarepluspoolsja.com/Rentals"
         image="https://www.aquacarepluspoolsja.com/images/about2.jpg"
       />

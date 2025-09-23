@@ -17,7 +17,7 @@ const AboutUs = () => {
        <SEO
         title="About AquaCare Plus Pools - Trusted Pool Cleaning Experts"
         description="Learn more about AquaCare Plus Pools, our mission, and our commitment to providing professional pool cleaning and maintenance services."
-        keywords="about AquaCare Plus Pools, pool cleaning experts, pool maintenance company"
+        keywords="about AquaCare Plus Pools, pool cleaning experts, pool maintenance company, pool service in Jamaica, pool company near me"
         url="https://www.aquacarepluspoolsja.com/AboutUs"
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />

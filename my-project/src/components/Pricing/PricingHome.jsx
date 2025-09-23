@@ -23,7 +23,7 @@ const PricingHome = () => {
        <SEO
         title="AquaCare Plus Pools Packages - Affordable Pool Care Plans"
         description="Choose from our pool cleaning packages: Starter, Standard, and Premium. Find the perfect plan for your pool care needs."
-        keywords="pool packages, pool cleaning plans, AquaCare Plus Pools packages"
+        keywords="pool packages, pool cleaning plans, AquaCare Plus Pools packages, pool service in Jamaica, pool company near me"
         url="https://www.aquacarepluspoolsja.com/Pricing"
         image="https://www.aquacarepluspoolsja.com/images/packages-preview.jpg"
       />

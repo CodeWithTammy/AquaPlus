@@ -19,7 +19,7 @@ const App = () => {
       <SEO
         title="AquaCare Plus Pools - Professional Pool Service"
         description="Book reliable pool cleaning and maintenance services with AquaCare Plus Pools."
-        keywords="pool cleaning, pool maintenance, AquaCare Plus Pools, pool services"
+        keywords="pool cleaning, pool maintenance, AquaCare Plus Pools, pool services, pool service in Jamaica, pool company near me"
         url="https://www.aquacarepluspoolsja.com/"
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
