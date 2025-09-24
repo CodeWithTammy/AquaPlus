@@ -7,11 +7,15 @@ const ListOfServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`) // Your backend API
-      .then((res) => res.json())
-      .then((data) => setServices(data))
-      .catch((err) => console.error("Error fetching services:", err));
-  }, []);
+  fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`)
+    .then(res => res.json())
+    .then(data => {
+      console.log("Fetched services:", data); // check this
+      setServices(data);
+    })
+    .catch(err => console.error("Error fetching services:", err));
+}, []);
+
 
   return (
     <div>
@@ -21,7 +25,7 @@ const ListOfServices = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true, amount: 0.3 }} // once=true means animate only first time
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 p-4 mx-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 px-4 mx-auto mb-20">
           {services.map((card) => (
             <Cards
               key={card._id}
