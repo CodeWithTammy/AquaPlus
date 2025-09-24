@@ -1,6 +1,4 @@
-// RentalPopup.jsx
 import { useState } from "react";
-
 import Swal from "sweetalert2";
 
 export default function RentalForm({ tool, price, isOpen, onClose }) {
@@ -12,6 +10,7 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
     phone: "",
     weeks: 1,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,30 +18,29 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
   };
 
   const total = (formData.weeks || 0) * price;
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const rentalData = { tool, price, ...formData, total };
-    
-    // console.log("Sending rentalData:", rentalData);
-     Swal.fire({
-        title: "Submitting Request...",
-        text: "Please wait while we send your request.",
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
+
+    Swal.fire({
+      title: "Submitting Request...",
+      text: "Please wait while we send your request.",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+    });
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(rentalData),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(rentalData),
+        }
+      );
 
       if (res.ok) {
         Swal.fire({
@@ -69,18 +67,21 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
       <div className="bg-white p-6 rounded-xl shadow-lg w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 relative max-h-[90vh] overflow-y-auto">
+        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-red-600"
         >
           ✖
         </button>
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center sm:text-left">Rent {tool}</h2>
+
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center sm:text-left">
+          Rent {tool}
+        </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Grid for inputs */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">Tool</label>
@@ -153,7 +154,9 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">Duration (weeks)</label>
+              <label className="block text-sm font-medium mb-1">
+                Duration (weeks)
+              </label>
               <input
                 type="number"
                 name="weeks"
@@ -169,7 +172,6 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Submit button */}
           <div className="flex justify-center">
             <button
               type="submit"
@@ -178,7 +180,13 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
                 loading ? "opacity-70 cursor-not-allowed" : ""
               }`}
             >
-              {loading ? <span>Processing...</span> : <>Confirm Rental <span className="text-lg">→</span></>}
+              {loading ? (
+                <span>Processing...</span>
+              ) : (
+                <>
+                  Confirm Rental <span className="text-lg">→</span>
+                </>
+              )}
             </button>
           </div>
         </form>
