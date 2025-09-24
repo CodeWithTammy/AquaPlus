@@ -68,8 +68,7 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="bg-white p-6 rounded-xl shadow-lg w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 relative max-h-[90vh] overflow-y-auto">
-        {/* Close button */}
+      <div className="bg-white p-6 rounded-xl shadow-lg w-full sm:w-11/12 md:w-5/6 lg:w-2/3 xl:w-1/2 relative max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-red-600"
