@@ -159,7 +159,7 @@ const Form = () => {
             <div>
               <h4 className="font-semibold text-lg">Call us:</h4>
               <p className="mb-1">Call us to speak to a member of our team. We are always happy to help.</p>
-              <a href="tel:+18763512761" className="text-blue-500 font-medium">1-876-351-2761</a>
+              <a href="tel:+8765174831" className="text-blue-500 font-medium">1-876-517-4831</a>
             </div>
           </div>
         </div>
