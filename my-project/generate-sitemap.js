@@ -10,11 +10,12 @@ async function generateSitemap() {
 
   // Add your routes here
   smStream.write({ url: "/", changefreq: "daily", priority: 1.0 });
-  smStream.write({ url: "/Services", changefreq: "weekly", priority: 0.8 });
+  smStream.write({ url: "/Services", changefreq: "daily", priority: 0.8 });
   smStream.write({ url: "/AboutUs", changefreq: "monthly", priority: 0.7 });
   smStream.write({ url: "/Rentals", changefreq: "weekly", priority: 0.8 });
   smStream.write({ url: "/Contact-Us", changefreq: "monthly", priority: 0.6 });
   smStream.write({ url: "/Pricing", changefreq: "weekly", priority: 0.8 });
+  smStream.write({ url: "/Book-Now", changefreq: "daily", priority: 0.8 });
 
   smStream.end();
   await streamToPromise(smStream);

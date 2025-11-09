@@ -24,6 +24,7 @@ const App = () => {
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
     
+    {/* <HurricaneBanner/> */}
       <Navbar quoteRef={quoteRef}/>
       <Banner/>
       <FirstSection/>

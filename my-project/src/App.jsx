@@ -25,6 +25,7 @@ import AdminLoginPage from "./components/AdminScreen/AdminLoginPage";
 import AdminRoute from "./components/AdminScreen/AdminRoute";
 import TermsandConditions from "./components/TermsandConditions/TermsandConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import Booking from "./components/BookingPage/Booking";
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/Products" element={<ProductMain />} />
             <Route path="/Rentals" element={<RentalHomePage />} />
             <Route path="/Contact-Us" element={<ContactUs />} />
+            <Route path = "/Book-Now" element={<Booking/>}></Route>
             
             <Route path="/login" element={<AdminLoginPage />} />
             <Route path="/Admin" element={

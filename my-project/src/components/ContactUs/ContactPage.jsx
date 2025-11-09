@@ -91,7 +91,7 @@ const ContactPage = () => {
                    <h1 className='text-xl font-bold mb-5'>Get In Touch</h1>
                    <p>Contact us for any inquiries or questions</p>
                    <p>Email: aquacareadvantage@gmail.com</p>
-                   <p>Telephone: 876-517-4831/876-419-9212</p>
+                   <p>Telephone: 876-517-4831/876-844-0998</p>
        
                </div>
        </div>

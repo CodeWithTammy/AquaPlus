@@ -24,7 +24,7 @@ const ServicesIntro = () => {
               <span className="text-secondbasecolor pr-5">|</span>Our Services
             </p>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-              Explore Our Prestine Pool Services
+              Explore Our Pristine Pool Services
             </h1>
           </div>
 
