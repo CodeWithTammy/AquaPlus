@@ -85,7 +85,7 @@ const BookMain = () => {
   };
 
   return (
-    <div id="quotesection" className="bg-white w-full min-h-screen mt-28">
+    <div id="quotesection" className="bg-white w-full min-h-screen">
       {/* Hero Header Section */}
       <section className="w-full text-center py-16 px-6 bg-gradient-to-b from-blue-50 to-white">
         <Motion.div

@@ -52,11 +52,19 @@ const Navbar = () => {
             </p>
 
             <Link
-              to="/packages"
-              className="mt-2 sm:mt-0 mr-10 inline-block bg-white text-green-700 font-semibold px-2 py-2 rounded-lg hover:bg-green-100 transition"
-            >
-              View Packages
-            </Link>
+  to="/Pricing"
+  className="relative mt-2 sm:mt-0 mr-10 inline-block font-semibold px-4 py-2 rounded-lg overflow-hidden transition duration-300 group"
+>
+ <span
+  className="absolute inset-0 bg-[url('/images/Flag_of_Jamaica.svg')] bg-cover bg-center opacity-50 transition duration-300 group-hover:opacity-0"
+></span>
+
+  <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition duration-300"></span>
+  <span className="relative z-10 text-white group-hover:text-white transition duration-300">
+    View Packages
+  </span>
+</Link>
+
           </div>
         )}
 
