@@ -363,7 +363,7 @@ const ServiceDetails = () => {
     </p>
 
     <Link
-      to="Book-Now"
+      to="/Book-Now"
       className="inline-block bg-white text-[#073B74] font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-black hover:text-white transition duration-300"
     >
       Book Now
