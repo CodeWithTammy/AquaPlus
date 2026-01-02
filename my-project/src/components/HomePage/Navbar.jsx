@@ -21,8 +21,6 @@ const Navbar = () => {
   // State to track which dropdown is open
   const [openDropdown, setOpenDropdown] = useState(null);
 
-  // State to show/hide the donation banner
-  const [showBanner, setShowBanner] = useState(true);
 
   // Toggle mobile menu visibility
   const toggleMenu = () => {
@@ -32,41 +30,8 @@ const Navbar = () => {
   return (
     <>
       {/* Fixed wrapper for banner + navbar */}
-      <div className="fixed top-0 left-0 w-full z-50">
-        {/* Donation Banner */}
-        {showBanner && (
-          <div className="relative w-full bg-gradient-to-r from-cyan-600 to-green-600 text-white text-center px-4 py-3 flex flex-col sm:flex-row items-center justify-center gap-3">
-            {/* Dismiss (close) button */}
-            <button
-              onClick={() => setShowBanner(false)}
-              className="absolute right-3 top-2 text-white text-2xl font-bold hover:text-gray-200 transition"
-              aria-label="Close banner"
-            >
-              &times;
-            </button>
-
-            <p className="text-sm sm:text-base font-medium leading-snug sm:leading-normal text-center sm:text-left">
-              <b>AquaCarePlusPools</b> × <b>Fortis Tours Hiking</b> are teaming up
-              to help those affected by <b>Hurricane Melissa</b>! When you purchase a{" "}
-              <b>Standard Package</b>, a portion of proceeds will be donated to support victims.
-            </p>
-
-            <Link
-  to="/Pricing"
-  className="relative mt-2 sm:mt-0 mr-10 inline-block font-semibold px-4 py-2 rounded-lg overflow-hidden transition duration-300 group"
->
- <span
-  className="absolute inset-0 bg-[url('/images/Flag_of_Jamaica.svg')] bg-cover bg-center opacity-50 transition duration-300 group-hover:opacity-0"
-></span>
-
-  <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-100 transition duration-300"></span>
-  <span className="relative z-10 text-white group-hover:text-white transition duration-300">
-    View Packages
-  </span>
-</Link>
-
-          </div>
-        )}
+      <div className="fixed top-0 left-0 w-full z-40">
+       
 
         {/* Navbar */}
         <nav className="bg-white shadow-md p-2 w-full z-40">
@@ -236,8 +201,7 @@ const Navbar = () => {
         </nav>
       </div>
 
-      {/* Spacer to prevent content hiding behind fixed header */}
-      <div className={showBanner ? "h-[160px]" : "h-[80px]"}></div>
+    
     </>
   );
 };

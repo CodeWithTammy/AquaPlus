@@ -11,7 +11,9 @@
   "type": "module",
   "description": "",
   "dependencies": {
-    "motion": "^12.6.2",
-    "nodemailer": "^7.0.3"
+    "motion": "^12.23.26",
+    "nodemailer": "^7.0.3",
+    "react-confetti": "^6.4.0",
+    "validator": "^13.15.26"
   }
 }

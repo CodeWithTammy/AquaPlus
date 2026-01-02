@@ -41,6 +41,13 @@ import { fileURLToPath } from 'url';
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 // import { authMiddleware } from "./authmiddleware.js";
+import validator from 'validator';
+
+// Updated validation middleware helper
+const sanitizeInput = (value) => {
+  return validator.escape(validator.trim(value));
+};
+
 
 const app = express();
 
@@ -255,34 +262,29 @@ app.post(
   [
     body("name").trim().notEmpty().escape().withMessage("Name is required"),
     body("price").trim().notEmpty().matches(/^\d+JMD\/week$/).withMessage("Price must be in the format '50JMD/week'"),
-    body("desc").trim().escape(),
+    body("desc").trim().escape().withMessage("Description must be valid"), // ✅ Added
     body("amount")
       .isInt({ min: 0 })
       .withMessage("Amount must be a positive integer"),
   ],
-  postLimiter, async (req, res) => {
-    // Validate inputs
+  postLimiter, 
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
     try {
-      // Sanitize and save data safely
       const newRental = new Rental({
         name: req.body.name,
         price: req.body.price,
         desc: req.body.desc,
         amount: req.body.amount,
-        image: req.file ? req.file.path : "", // multer handles file safely
+        image: req.file ? req.file.path : "",
       });
 
       await newRental.save();
-
-      //  Respond safely
-      res
-        .status(201)
-        .json({ message: "Rental added safely", rental: newRental });
+      res.status(201).json({ message: "Rental added safely", rental: newRental });
     } catch (err) {
       console.error("Error adding rental:", err);
       res.status(500).json({ error: "Failed to add rental" });
@@ -348,19 +350,22 @@ app.get(
 //tested
 app.post(
   "/api/rentalrequest",
-[
+  [
     body("tool").trim().escape(),
     body("price").isFloat({ min: 0 }).withMessage("Price must be a positive number"),
-    body("name").trim().escape(),
-    body("address").trim().escape(),
+    body("name").trim().escape().notEmpty().withMessage("Name is required"),
+    body("address").trim().escape().notEmpty().withMessage("Address is required"),
     body("email").isEmail().normalizeEmail(),
-    body("startDate").isISO8601().withMessage("Invalid start date"), // remove .toDate()
-    body("phone").trim().escape(),
+    body("startDate").isISO8601().withMessage("Invalid start date"),
+    body("phone")
+      .trim()
+      .matches(/^[\d\s\-\+\(\)]+$/) // ✅ Only allow valid phone characters
+      .withMessage("Invalid phone number format"),
     body("weeks").isInt({ min: 1 }).withMessage("Weeks must be at least 1"),
     body("total").isFloat({ min: 0 }).withMessage("Total must be a positive number"),
-  ], postLimiter,
+  ], 
+  postLimiter,
   async (req, res) => {
-     console.log("Received body:", req.body); 
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
@@ -369,12 +374,14 @@ app.post(
       const rentalrequest = new RentalRequest(req.body);
       await rentalrequest.save();
       io.emit("requestUpdated", rentalrequest);
+      
       await sendRentalRequestEmail(rentalrequest).catch(() =>
         console.error("Business email failed")
       );
       await sendRentalConfirmation(rentalrequest).catch(() =>
         console.error("Confirmation email failed")
       );
+      
       res.status(201).json({ message: "Rental request submitted" });
     } catch (err) {
       console.error(err);
@@ -487,7 +494,7 @@ app.post(
 // tested
 app.post(
   "/api/requestservices",
-   [
+  [
     body("full_name")
       .trim()
       .notEmpty()
@@ -499,9 +506,8 @@ app.post(
       .withMessage("Valid email is required"),
     body("phone")
       .trim()
-      .notEmpty()
-      .escape()
-      .withMessage("Phone number is required"),
+      .matches(/^[\d\s\-\+\(\)]+$/) // ✅ Phone validation
+      .withMessage("Invalid phone number format"),
     body("address")
       .trim()
       .notEmpty()
@@ -515,24 +521,32 @@ app.post(
     body("date")
       .isISO8601()
       .withMessage("Invalid date format"),
-body("time")
-  .matches(/^(0?[1-9]|1[0-2]):([0-5]\d) ?([AP]M)$/i)
-  .withMessage("Time must be in HH:MM AM/PM format"),
+    body("time")
+      .matches(/^(0?[1-9]|1[0-2]):([0-5]\d) ?([AP]M)$/i)
+      .withMessage("Time must be in HH:MM AM/PM format"),
     body("message")
       .trim()
-      .escape(),
-  ],postLimiter,
+      .escape()
+      .isLength({ max: 1000 }) // ✅ Added length limit
+      .withMessage("Message too long"),
+  ],
+  postLimiter,
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty()) 
+      return res.status(400).json({ errors: errors.array() });
 
     try {
       const request = new RequestService(req.body);
       await request.save();
       io.emit("requestUpdated", request);
 
-      await sendServiceRequestEmail(request).catch(() => console.error("Business email failed"));
-      await sendServiceRequestConfirmation(request).catch(() => console.error("Confirmation email failed"));
+      await sendServiceRequestEmail(request).catch(() => 
+        console.error("Business email failed")
+      );
+      await sendServiceRequestConfirmation(request).catch(() => 
+        console.error("Confirmation email failed")
+      );
 
       res.status(201).json({ message: "Request submitted successfully" });
     } catch (err) {
@@ -541,7 +555,6 @@ body("time")
     }
   }
 );
-
 // ---------GET SERVICE REQUESTS---------------
 //tested
 app.get("/api/requestservices", async (req, res) => {
@@ -658,26 +671,29 @@ app.get(
 app.post(
   "/api/subscriptions",
   [
-    body("name").trim().notEmpty().withMessage("Name is required"),
+    body("name").trim().notEmpty().escape().withMessage("Name is required"),
     body("email").isEmail().withMessage("Valid email is required").normalizeEmail(),
-    body("phone").trim().notEmpty().withMessage("Phone is required"),
-    body("address").trim().notEmpty().withMessage("Address is required"),
-    body("plan").trim().notEmpty().withMessage("Plan is required"),
-    body("status").optional().trim().escape(),          // 👈 optional
-    body("planactive").optional().trim().escape(),      // 👈 optional
-    body("contactStatus").optional().trim().escape(),   // 👈 optional
+    body("phone")
+      .trim()
+      .matches(/^[\d\s\-\+\(\)]+$/) // ✅ Phone validation
+      .withMessage("Invalid phone number format"),
+    body("address").trim().notEmpty().escape().withMessage("Address is required"),
+    body("plan").trim().notEmpty().escape().withMessage("Plan is required"),
+    body("status").optional().trim().escape(),
+    body("planactive").optional().trim().escape(),
+    body("contactStatus").optional().trim().escape(),
     body("activationDate").optional().isISO8601().withMessage("Invalid date"),
     body("renewalDate").optional().isISO8601().withMessage("Invalid date"),
   ],
   postLimiter,
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty()) 
+      return res.status(400).json({ errors: errors.array() });
 
     try {
       const data = { ...req.body };
 
-      // Strip out empty string values (so defaults kick in)
       ["status", "planactive", "contactStatus"].forEach((field) => {
         if (data[field] === "" || data[field] === null || data[field] === undefined) {
           delete data[field];
@@ -703,7 +719,6 @@ app.post(
     }
   }
 );
-
 app.delete(
   "/api/subscriptions/:id",
   [param("id").isMongoId().withMessage("Invalid subscription ID")],
@@ -812,16 +827,25 @@ app.post(
 app.post(
   "/api/contact",
   [
-    body("firstName").trim().escape(),
-    body("lastName").trim().escape(),
+    body("firstName").trim().escape().notEmpty().withMessage("First name required"),
+    body("lastName").trim().escape().notEmpty().withMessage("Last name required"),
     body("name").trim().escape(),
     body("email").isEmail().normalizeEmail(),
-    body("message").trim().escape(),
-    body("phone").trim().escape(),
-  ],postLimiter,
+    body("message")
+      .trim()
+      .escape()
+      .isLength({ min: 10, max: 1000 }) // ✅ Added length limits
+      .withMessage("Message must be between 10-1000 characters"),
+    body("phone")
+      .trim()
+      .matches(/^[\d\s\-\+\(\)]+$/) // ✅ Phone validation
+      .withMessage("Invalid phone number"),
+  ],
+  postLimiter,
   async (req, res) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty()) 
+      return res.status(400).json({ errors: errors.array() });
 
     try {
       await sendContactEmail(req.body);
