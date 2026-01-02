@@ -49,7 +49,7 @@ const TestimonialSection = () => {
                   <p className="font-semibold text-gray-800 text-sm">Anonymous Client</p>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <img 
-                      src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
+                      src="images/googlelogo.png" 
                       alt="Google" 
                       className="h-3"
                     />
@@ -83,7 +83,7 @@ const TestimonialSection = () => {
                   <p className="font-semibold text-gray-800 text-sm">Anonymous Client</p>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <img 
-                      src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
+                      src="images/googlelogo.png" 
                       alt="Google" 
                       className="h-3"
                     />
@@ -117,7 +117,7 @@ const TestimonialSection = () => {
                   <p className="font-semibold text-gray-800 text-sm">Anonymous Client</p>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <img 
-                      src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
+                      src="images/googlelogo.png" 
                       alt="Google" 
                       className="h-3"
                     />
