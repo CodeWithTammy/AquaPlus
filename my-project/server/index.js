@@ -262,7 +262,7 @@ app.post(
   [
     body("name").trim().notEmpty().escape().withMessage("Name is required"),
     body("price").trim().notEmpty().matches(/^\d+JMD\/week$/).withMessage("Price must be in the format '50JMD/week'"),
-    body("desc").trim().escape().withMessage("Description must be valid"), // ✅ Added
+    body("desc").trim().notEmpty().withMessage("Description is required").escape(),
     body("amount")
       .isInt({ min: 0 })
       .withMessage("Amount must be a positive integer"),
