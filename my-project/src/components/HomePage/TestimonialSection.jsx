@@ -131,7 +131,7 @@ const TestimonialSection = () => {
 
         <div className="text-center mt-8">
           <a
-            href="https://www.google.com/search?q=aquacarepluspoolja+jamaica&sca_esv=943a4e4e9742d10f&sxsrf=AE3TifNnaLhln3I40xDRknAdCGQxPUbgbw%3A1767294866589&ei=ksdWafjVI8qTwbkPzIqLoQM&ved=0ahUKEwj45vG1huuRAxXKSTABHUzFIjQQ4dUDCBE&uact=5&oq=aquacarepluspoolja+jamaica&gs_lp=Egxnd3Mtd2l6LXNlcnAiGmFxdWFjYXJlcGx1c3Bvb2xqYSBqYW1haWNhMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKSPgfUNECWPcecAN4AJABAJgB6AGgAfULqgEFMC43LjK4AQPIAQD4AQGYAgygAtkMwgIIEAAYsAMY7wXCAgsQABiwAxiiBBiJBcICBRAAGO8FwgIIEAAYogQYiQXCAgUQIRigAZgDAIgGAZAGBJIHBTMuNy4yoAewI7IHBTAuNy4yuAe_DMIHCDAuMS4xMC4xyAc5gAgA&sclient=gws-wiz-serp&lqi=ChphcXVhY2FyZXBsdXNwb29samEgamFtYWljYUjwz-CY7byAgAhaHhAAIhphcXVhY2FyZXBsdXNwb29samEgamFtYWljYZIBGHN3aW1taW5nX3Bvb2xfY29udHJhY3RvcpoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQycG9OR0pGV2xSYVZuQk1XbnBTU0UxR1NuZGphMUl6VTBkTk1WcHRZeEFC-gEFCNMDEEc#lkt=LocalPoiReviews&rlimm=11122043288286973665"
+            href="https://g.page/r/CeHO3I5xb1maEAE/review"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-lg"
