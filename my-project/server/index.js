@@ -79,10 +79,11 @@ app.use(
       ],
       scriptSrc: [
         "'self'",
+        "'unsafe-inline'",
         "https://apis.google.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
-        "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
+        // "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
         "https://chimpstatic.com",
         "https://form-assets.mailchimp.com",
         "https://*.list-manage.com"   // Mailchimp forms and tracking
@@ -104,7 +105,8 @@ app.use(
         "https://eventcollector.mcf-prod.a.intuit.com",
         "https://*.execute-api.us-east-2.amazonaws.com",
         "https://securetoken.googleapis.com",
-        "https://mcf-integrations-mcmktg.mlchmpcompprduse2.iks2.a.intuit.com"
+        "https://mcf-integrations-mcmktg.mlchmpcompprduse2.iks2.a.intuit.com",
+        "https://www.googletagmanager.com"
 
 ],
       objectSrc: ["'none'"],
