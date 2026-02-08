@@ -3,8 +3,11 @@ import Navbar from '../HomePage/Navbar'
 import BookingMain from './BookMain'
 import Footer from '../HomePage/Footer'
 import SEO from "../SEO"
+import GoogleTag from '../ReuseableComponents/GoogleTag'
+
 
 const Booking = () => {
+
   return (
     <div>
          <SEO
@@ -14,6 +17,7 @@ const Booking = () => {
         url="https://www.aquacarepluspoolsja.com/Book-Now"
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
+      <GoogleTag tagId="AW-17872745834" />
         <Navbar/>
         <BookingMain/>
         <Footer/>
