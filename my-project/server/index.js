@@ -79,11 +79,10 @@ app.use(
       ],
       scriptSrc: [
         "'self'",
-        "'unsafe-inline'",
         "https://apis.google.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
-        // "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
+        "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
         "https://chimpstatic.com",
         "https://form-assets.mailchimp.com",
         "https://*.list-manage.com"   // Mailchimp forms and tracking
