@@ -17,7 +17,7 @@ const Booking = () => {
         url="https://www.aquacarepluspoolsja.com/Book-Now"
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
-      <GoogleTag tagId="G-D82DSV8Z81" />
+      <GoogleTag tagId={import.meta.env.VITE_GOOGLE_TAG_ID} />
         <Navbar/>
         <BookingMain/>
         <Footer/>

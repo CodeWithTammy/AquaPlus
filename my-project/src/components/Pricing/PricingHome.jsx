@@ -31,7 +31,7 @@ const PricingHome = () => {
         url="https://www.aquacarepluspoolsja.com/Pricing"
         image="https://www.aquacarepluspoolsja.com/images/packages-preview.jpg"
       />
-      <GoogleTag tagId="G-D82DSV8Z81" />
+      <GoogleTag tagId={import.meta.env.VITE_GOOGLE_TAG_ID} />
 
       {/* Navbar */}
       <Navbar />
