@@ -80,6 +80,8 @@ app.use(
       scriptSrc: [
         "'self'",
         "https://apis.google.com",
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com",
         "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
         "https://chimpstatic.com",
         "https://form-assets.mailchimp.com",
