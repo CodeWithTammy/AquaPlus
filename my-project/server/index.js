@@ -32,7 +32,6 @@ import {
 import { body, param, validationResult } from "express-validator";
 import path from "path";
 import { fileURLToPath } from 'url';
-import crypto from "crypto";
 
 
 
@@ -66,10 +65,6 @@ app.use(
 app.use(express.json());
 app.use(helmet()); // security headers
 
-app.use((req, res, next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString("base64");
-  next();
-});
 
 
 app.use(
@@ -87,7 +82,8 @@ app.use(
         "https://apis.google.com",
         "https://www.googletagmanager.com",
         "https://www.google-analytics.com",
-         (req, res) => `'nonce-${res.locals.nonce}'`, // Allow inline scripts with nonce
+        "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
+        "'sha256-dHGxs0Ppkk1kO1WDlm9cVa8LuwyEtVrUQXJbplZEJTA='",
         "https://chimpstatic.com",
         "https://form-assets.mailchimp.com",
         "https://*.list-manage.com"   // Mailchimp forms and tracking
