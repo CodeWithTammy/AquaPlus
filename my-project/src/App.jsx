@@ -26,6 +26,7 @@ import AdminRoute from "./components/AdminScreen/AdminRoute";
 import TermsandConditions from "./components/TermsandConditions/TermsandConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Booking from "./components/BookingPage/Booking";
+import GoogleTag from "./components/ReuseableComponents/GoogleTag";
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -41,6 +42,7 @@ const App = () => {
   return (
 
       <div className="overflow-x-hidden">
+         <GoogleTag tagId={import.meta.env.VITE_GOOGLE_TAG_ID} />
         <Router>
           <ScrollToTheTop />
 
