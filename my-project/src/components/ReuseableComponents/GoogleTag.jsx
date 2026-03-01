@@ -20,7 +20,8 @@ const GoogleTag = ({ tagId }) => {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '${tagId}');
+        gtag('config', '${tagId}',{
+        debug_mode: true});
     `;
     document.head.appendChild(script2);
 

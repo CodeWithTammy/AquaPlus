@@ -76,6 +76,8 @@ app.use(
         "'self'",
         "https://res.cloudinary.com",
         "https://form-assets.mailchimp.com",
+        " https://www.googletagmanager.com",
+         "https://www.google-analytics.com ",
         "data:"
       ],
       scriptSrc: [
@@ -106,7 +108,8 @@ app.use(
         "https://*.execute-api.us-east-2.amazonaws.com",
         "https://securetoken.googleapis.com",
         "https://mcf-integrations-mcmktg.mlchmpcompprduse2.iks2.a.intuit.com",
-        "https://www.googletagmanager.com"
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com"
 
 ],
       objectSrc: ["'none'"],
