@@ -8,6 +8,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import GoogleTag from '../ReuseableComponents/GoogleTag'
 import SEO from "../SEO"
 
 const ContactPage = () => {
@@ -20,6 +21,7 @@ const ContactPage = () => {
         url="https://www.aquacarepluspoolsja.com/Contact-Us"
         image="https://www.aquacarepluspoolsja.com/images/logo.png"
       />
+      <GoogleTag tagId={import.meta.env.VITE_GOOGLE_TAG_ID} />
 
         <Navbar/>
         <Banner

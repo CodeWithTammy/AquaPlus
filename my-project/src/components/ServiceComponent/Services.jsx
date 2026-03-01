@@ -6,6 +6,7 @@ import ServicesIntro from './ServicesIntro'
 import Footer from '../HomePage/Footer'
 import QuotesSection from '../HomePage/RequestSection'
 import SEO from "../SEO";
+import GoogleTag from '../ReuseableComponents/GoogleTag'
 
 const Services = () => {
   return (
@@ -17,6 +18,7 @@ const Services = () => {
         url="https://www.aquacarepluspoolsja.com/Services"
         image="https://www.aquacarepluspoolsja.com/images/service2.jpg"
       />
+      <GoogleTag tagId={import.meta.env.VITE_GOOGLE_TAG_ID} />
         <Navbar/> 
         <BannerSection
         title={"Services"}

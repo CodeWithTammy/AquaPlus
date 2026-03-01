@@ -46,7 +46,7 @@ const RentalTracker = () => {
     const socket = io("https://aquacarepluspoolsja.com");
 
     // Initial fetch of existing rental requests
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/rentalrequest`)
       .then((res) => res.json())
       .then((data) => setRequest(data))
       .catch((err) => console.error("Error fetching requests:", err));
@@ -78,7 +78,7 @@ const RentalTracker = () => {
     const newStatus = updated.status === "Pending" ? "Completed" : "Pending";
 
     try {
-      await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/rentalrequest/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -107,7 +107,7 @@ const RentalTracker = () => {
     if (!window.confirm("Are you sure you want to delete this rental?")) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${id}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rentalrequest/${id}`, { method: "DELETE" });
       if (res.ok) setRequest((prev) => prev.filter((r) => r._id !== id));
       else console.error("Failed to delete rental");
     } catch (err) {
@@ -239,7 +239,7 @@ const RentalTracker = () => {
 
                         try {
                           await fetch(
-                            `${import.meta.env.VITE_API_URL_PRODUCTION}/api/toggleRent/${item._id}`,
+                            `${import.meta.env.VITE_API_URL}/api/toggleRent/${item._id}`,
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },

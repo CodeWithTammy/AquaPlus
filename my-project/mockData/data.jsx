@@ -1,6 +1,3 @@
-
-import { Children } from "react";
-
 export const NavbarMenu = [
   {
     id: 1,
@@ -30,8 +27,8 @@ export const NavbarMenu = [
       },
       {
         id: 3,
-        title: "Renovations and Repairs",
-        link: "/Services/Renovations-and-Repairs",
+        title: "Pool Repairs and Restorations",
+        link: "/Services/Pool-Repairs-and-Restorations",
       },
       {
         id: 4,

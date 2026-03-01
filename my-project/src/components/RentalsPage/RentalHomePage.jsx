@@ -16,7 +16,7 @@ const RentalHomePage = () => {
 
 
     useEffect(()=>{
-        fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/rentals`)
         .then(res => res.json())
         .then(data => setProducts(data))
         .catch(err => console.error("Error fetching rentals:", err));

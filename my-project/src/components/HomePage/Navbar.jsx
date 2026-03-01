@@ -102,7 +102,7 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Request Services button (desktop only) */}
+            {/* Book Now button (desktop only) */}
             <Link to="/Book-Now">
               <button
                 className="hidden bg-red text-secondary border-2 border-transparent px-4 py-2 rounded-3xl 

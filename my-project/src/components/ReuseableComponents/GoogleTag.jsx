@@ -2,11 +2,16 @@ import { useEffect } from "react";
 
 const GoogleTag = ({ tagId }) => {
   useEffect(() => {
-    const script1 = document.createElement("script");
-    script1.async = true;
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
-   
 
+    if(!tagId) {
+      console.warn("Google Tag ID is missing. Please provide a valid tag ID.");
+      return;
+    }
+
+    //load google tag script
+    const script1 = document.createElement("script");
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
+    script1.async = true;
     document.head.appendChild(script1);
 
     const script2 = document.createElement("script");

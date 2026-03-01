@@ -57,6 +57,7 @@ app.use(
     origin:[ "https://aquacare-plus-pools.onrender.com", 
     "https://aquacarepluspoolsja.com",
     // "https://www.aquacarepluspoolsja.com",
+    "http://localhost:3000"
     ],// frontend URL
     credentials: true,
   })
@@ -80,13 +81,12 @@ app.use(
       scriptSrc: [
         "'self'",
         "https://apis.google.com",
-        "https://www.googletagmanager.com",
-        "https://www.google-analytics.com",
         "'sha256-Ou9FulhhgRtGHSjC6I2EpgW/TiahZP9zTnbHolOKwr8='",
-        "'sha256-dHGxs0Ppkk1kO1WDlm9cVa8LuwyEtVrUQXJbplZEJTA='",
         "https://chimpstatic.com",
         "https://form-assets.mailchimp.com",
-        "https://*.list-manage.com"   // Mailchimp forms and tracking
+        "https://*.list-manage.com",   // Mailchimp forms and tracking
+        "https://www.googletagmanager.com",
+        "https://www.google-analytics.com"
 ],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],

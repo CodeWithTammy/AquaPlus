@@ -14,7 +14,7 @@ const ServicesSection = () => {
    const [services, setServices] = useState([]);
   
     useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`) // API endpoint to fetch services
+      fetch(`${import.meta.env.VITE_API_URL}/api`) // API endpoint to fetch services
         .then(res => res.json())
         .then(data => setServices(data))
         .catch(err => console.error("Error fetching services:", err));

@@ -34,7 +34,7 @@ export default function RentalForm({ tool, price, isOpen, onClose }) {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest`,
+        `${import.meta.env.VITE_API_URL}/api/rentalrequest`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

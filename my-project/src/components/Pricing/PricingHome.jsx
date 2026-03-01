@@ -7,6 +7,7 @@ import { motion as Motion } from "framer-motion";
 import { PackagesData } from "../../../mockData/packagesdata";
 import PackageComponent from "../ReuseableComponents/PackageComponent";
 import { Typography } from "@material-tailwind/react";
+import GoogleTag from '../ReuseableComponents/GoogleTag'
 import SEO from "../SEO";
 
 // Dummy FAQ data

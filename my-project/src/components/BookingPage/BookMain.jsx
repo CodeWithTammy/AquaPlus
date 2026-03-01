@@ -44,7 +44,7 @@ const BookMain = () => {
       const formattedTime = formatTo12Hour(formData.time);
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices`,
+        `${import.meta.env.VITE_API_URL}/api/requestservices`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

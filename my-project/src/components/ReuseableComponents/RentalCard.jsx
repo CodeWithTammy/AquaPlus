@@ -14,7 +14,7 @@ const RentalCard = ({ image, name, description, price }) => {
     useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentals`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rentals`);
         const data = await res.json();
 
         // Map rental names to amounts

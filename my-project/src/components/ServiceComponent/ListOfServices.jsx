@@ -7,7 +7,7 @@ const ListOfServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api`)
+    fetch(`${import.meta.env.VITE_API_URL}/api`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched services:", data); // check this

@@ -10,7 +10,7 @@ import RequestSection from "../HomePage/RequestSection";
 import { NavbarMenu } from "../../../mockData/data";
 import { Link, useLocation } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { ChevronDown } from "lucide-react"; // or @heroicons/react
+import { ChevronDown } from "lucide-react";
 import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
@@ -25,7 +25,7 @@ const ServiceDetails = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/Services/${title}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/Services/${title}`)
       .then((res) => res.json())
       .then((data) => setDetail(data))
       .catch((err) => console.error("Error fetching details:", err));
@@ -94,7 +94,7 @@ const ServiceDetails = () => {
                   const phone = e.target.phone.value;
 
                   try {
-                    const res = await fetch(`${import.meta.env.VITE_API_URL_PRODUCTION}/api/contact`, {
+                    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ name, email, message, phone }),

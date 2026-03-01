@@ -7,11 +7,11 @@ const ViewDetailsCard = ({ customerId, type, onClose }) => {
 
   const endpoint =
     type === "service"
-      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/requestservices/${customerId}`
+      ? `${import.meta.env.VITE_API_URL}/api/requestservices/${customerId}`
       : type === "rental"
-      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/rentalrequest/${customerId}`
+      ? `${import.meta.env.VITE_API_URL}/api/rentalrequest/${customerId}`
       : type === "subscription"
-      ? `${import.meta.env.VITE_API_URL_PRODUCTION}/api/subscriptions/${customerId}`
+      ? `${import.meta.env.VITE_API_URL}/api/subscriptions/${customerId}`
       : null;
 
   useEffect(() => {
