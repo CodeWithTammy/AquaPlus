@@ -87,6 +87,7 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
     >
       {price[0]}
       {price[1]}
+      {price[2] && (
       <Typography
         as="span"
         color="blue-gray"
@@ -100,6 +101,7 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
       >
         /{price[2]}
       </Typography>
+      )}
     </Typography>
   </CardHeader>
 
@@ -137,7 +139,7 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
             : "bg-none border-2 border-blue-500 text-blue-500 rounded-md w-48 py-2 px-4 hover:bg-primary hover:text-white hover:border-transparent"
         }`}
       >
-        Select Plan
+        {title === "Premium Package" ? "Contact Us" : "Select Plan"}
       </button>
     )}
   </div>

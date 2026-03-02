@@ -5,7 +5,7 @@ export const PackagesData = [
   {
       title: "Starter Package",
       desc: "Per month: 100% Maintenance Guarantee",
-      price: ["JMD$", "18,000", "mo"],
+      price: ["JMD$", "27,000", "mo"],
       options: [
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Weekly Routined Cleaning" },
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Delivery and Administration of Chemicals" },
@@ -17,7 +17,7 @@ export const PackagesData = [
     {
       title: "Standard Package",
       desc: "Per month: Twice weekly maintenance.\nIdeal for residential commercial pools with moderate use.",
-      price: ["JMD$", "30,000", "mo"],
+      price: ["JMD$", "55,575", "mo"],
       options: [
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Delivery and Administration of Chemicals" },
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Evaluation of Equipment and Filtration Systems" },
@@ -33,7 +33,7 @@ export const PackagesData = [
     {
       title: "Premium Package",
       desc: "Per month: Full pool service,\nIdeal for Luxury/High traffic pools",
-      price: ["JMD$", "65,000", "mo"],
+      price: ["","Enterprise", ""],
       options: [
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Customized Maintenance Plan" },
         { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Automated Maintenance Tools" },
@@ -50,4 +50,4 @@ export const PackagesData = [
       ],
     },
 ];
-    
+  

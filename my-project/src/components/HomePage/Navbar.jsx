@@ -11,18 +11,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import logo from "/images/logo.png";
 import { NavbarMenu } from "../../../mockData/data";
 
-// Components
-import QuotesSection from "./RequestSection";
-
 const Navbar = () => {
-  // State for mobile menu open/close
   const [isOpen, setIsOpen] = useState(false);
-
-  // State to track which dropdown is open
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [showBanner, setShowBanner] = useState(true);
 
-
-  // Toggle mobile menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -31,11 +24,48 @@ const Navbar = () => {
     <>
       {/* Fixed wrapper for banner + navbar */}
       <div className="fixed top-0 left-0 w-full z-40">
-       
+
+        {/* Slim Closable Banner */}
+  {/* Service Update Banner */}
+<div
+  className={`bg-primary text-white overflow-hidden transition-all duration-300 ${
+    showBanner ? "max-h-40 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
+  }`}
+>
+  <div className="max-w-5xl mx-auto px-6 flex items-start justify-between gap-4">
+    
+    {/* Text Content */}
+    <div className="text-center md:text-left flex-1">
+      <h2 className="text-base md:text-lg font-semibold mb-1">
+        Important Service Update
+      </h2>
+
+      <p className="text-sm md:text-base leading-snug">
+        Effective March 31st 2026, our service rates will be adjusted to reflect
+        increased operating costs and to ensure we continue delivering the
+        reliable, high-quality service you expect.
+      </p>
+
+      <p className="mt-2 text-sm md:text-base font-medium leading-snug">
+        We appreciate your continued trust in AquaCare Plus Pools as we remain
+        committed to excellence in pool care.
+      </p>
+    </div>
+
+    {/* Close Button */}
+    <button
+      onClick={() => setShowBanner(false)}
+      className="text-white text-xl leading-none hover:opacity-70 transition mt-1"
+    >
+      ✕
+    </button>
+  </div>
+</div>
 
         {/* Navbar */}
-        <nav className="bg-white shadow-md p-2 w-full z-40">
+        <nav className="bg-white shadow-md p-2 w-full">
           <div className="container mx-auto flex justify-between items-center">
+            
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <img
@@ -45,7 +75,7 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation */}
             <ul className="text-sm hidden lg:flex space-x-8 xl:text-lg">
               {NavbarMenu.map((item) => (
                 <li
@@ -58,10 +88,9 @@ const Navbar = () => {
                     {item.title}
                     {item.dropdown && (
                       <svg
-                        className={`w-2.5 h-2.5 ms-2.5 inline-block transition-transform duration-300 ${
+                        className={`w-2.5 h-2.5 inline-block transition-transform duration-300 ${
                           openDropdown === item.id ? "rotate-180" : "rotate-0"
                         }`}
-                        aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 10 6"
@@ -77,13 +106,13 @@ const Navbar = () => {
                     )}
                   </Link>
 
-                  {/* Dropdown menu */}
+                  {/* Dropdown */}
                   {item.dropdown && (
                     <ul
-                      className={`absolute bg-white w-60 shadow-lg mt-0 rounded-lg p-4 z-50 transition-all duration-300 transform ${
+                      className={`absolute bg-white w-60 shadow-lg mt-0 rounded-lg p-4 z-50 transition-all duration-300 ${
                         openDropdown === item.id
-                          ? "opacity-100 pointer-events-auto ease-out"
-                          : "opacity-0 pointer-events-none ease-in"
+                          ? "opacity-100 pointer-events-auto"
+                          : "opacity-0 pointer-events-none"
                       }`}
                     >
                       {item.children.map((child) => (
@@ -102,33 +131,24 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Book Now button (desktop only) */}
+            {/* Desktop Book Now */}
             <Link to="/Book-Now">
               <button
                 className="hidden bg-red text-secondary border-2 border-transparent px-4 py-2 rounded-3xl 
-                lg:block lg:w-auto lg:h-auto lg:text-xs xl:text-lg hover:bg-white hover:text-red hover:border-red transition duration-300"
+                lg:block lg:text-xs xl:text-lg hover:bg-white hover:text-red hover:border-red transition duration-300"
               >
                 Book Now
                 <FaArrowRightLong className="hidden xl:inline-block ml-2" />
               </button>
             </Link>
 
-            {/* Mobile menu toggle */}
-            {!isOpen ? (
-              <div
-                onClick={toggleMenu}
-                className="cursor-pointer ml-auto lg:hidden text-red"
-              >
-                <HiMenu size={30} />
-              </div>
-            ) : (
-              <div
-                onClick={toggleMenu}
-                className="cursor-pointer ml-auto lg:hidden text-red"
-              >
-                <IoClose size={30} />
-              </div>
-            )}
+            {/* Mobile Toggle */}
+            <div
+              onClick={toggleMenu}
+              className="cursor-pointer ml-auto lg:hidden text-red"
+            >
+              {isOpen ? <IoClose size={30} /> : <HiMenu size={30} />}
+            </div>
 
             {/* Mobile Menu */}
             {isOpen && (
@@ -154,7 +174,7 @@ const Navbar = () => {
                                 openDropdown === item.id ? null : item.id
                               )
                             }
-                            className={`px-2 text-gray-600 transition-transform duration-300 ${
+                            className={`px-2 transition-transform duration-300 ${
                               openDropdown === item.id ? "rotate-180" : ""
                             }`}
                           >
@@ -181,18 +201,17 @@ const Navbar = () => {
                     </li>
                   ))}
 
-                  {/* Request Services button for mobile */}
+                  {/* Mobile Book Now */}
                   <li>
                     <Link to="/Book-Now">
                       <button
-                        className="w-full bg-red text-white px-4 py-2 mt-4 rounded-3xl hover:bg-white 
-                        hover:text-red border-2 hover:border-red transition"
+                        className="w-full bg-red text-white px-4 py-2 mt-4 rounded-3xl 
+                        hover:bg-white hover:text-red border-2 hover:border-red transition"
                       >
                         Book Now
                         <FaArrowRightLong className="inline-block ml-2" />
                       </button>
                     </Link>
-                
                   </li>
                 </ul>
               </div>
@@ -200,8 +219,6 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-
-    
     </>
   );
 };
