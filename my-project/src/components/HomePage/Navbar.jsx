@@ -29,7 +29,7 @@ const Navbar = () => {
   {/* Service Update Banner */}
 <div
   className={`bg-primary text-white overflow-hidden transition-all duration-300 ${
-    showBanner ? "max-h-40 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
+    showBanner ? "max-h-45 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
   }`}
 >
   <div className="max-w-5xl mx-auto px-6 flex items-start justify-between gap-4">

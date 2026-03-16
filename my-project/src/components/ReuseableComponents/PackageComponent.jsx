@@ -10,11 +10,13 @@ import {
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import PricingForm from "../ReuseableComponents/PricingForm";
+import { PackagesData } from "../../../mockData/packagesdata";
 
 
-export function PackageComponent({ title, desc, price, options, showSelectButton=false }) {
+export function PackageComponent({ title, desc, price, options, showSelectButton=false, priceNote }) {
 
       const [showForm, setShowForm] = useState(false);
+      
 
   return (
     
@@ -28,7 +30,7 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
       : "bg-white"
   }`}
 >
-    {/* ✅ Recommendation badge */}
+    {/* Recommendation badge */}
 {title === "Standard Package" && (
   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg flex items-center gap-1">
     <svg
@@ -103,6 +105,12 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
       </Typography>
       )}
     </Typography>
+      {/* Price note (optional) */}
+  {priceNote && (
+    <Typography variant="small" className="text-gray-400 mt-1">
+      {priceNote}
+    </Typography>
+  )}
   </CardHeader>
 
   <CardBody className="pt-0">
