@@ -14,7 +14,7 @@ import { NavbarMenu } from "../../../mockData/data";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [showBanner, setShowBanner] = useState(true);
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,42 +25,6 @@ const Navbar = () => {
       {/* Fixed wrapper for banner + navbar */}
       <div className="fixed top-0 left-0 w-full z-40">
 
-        {/* Slim Closable Banner */}
-  {/* Service Update Banner */}
-<div
-  className={`bg-primary text-white overflow-hidden transition-all duration-300 ${
-    showBanner ? "max-h-45 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
-  }`}
->
-  <div className="max-w-5xl mx-auto px-6 flex items-start justify-between gap-4">
-    
-    {/* Text Content */}
-    <div className="text-center md:text-left flex-1">
-      <h2 className="text-base md:text-lg font-semibold mb-1">
-        Important Service Update
-      </h2>
-
-      <p className="text-sm md:text-base leading-snug">
-        Effective March 31st 2026, our service rates will be adjusted to reflect
-        increased operating costs and to ensure we continue delivering the
-        reliable, high-quality service you expect.
-      </p>
-
-      <p className="mt-2 text-sm md:text-base font-medium leading-snug">
-        We appreciate your continued trust in AquaCare Plus Pools as we remain
-        committed to excellence in pool care.
-      </p>
-    </div>
-
-    {/* Close Button */}
-    <button
-      onClick={() => setShowBanner(false)}
-      className="text-white text-xl leading-none hover:opacity-70 transition mt-1"
-    >
-      ✕
-    </button>
-  </div>
-</div>
 
         {/* Navbar */}
         <nav className="bg-white shadow-md p-2 w-full">

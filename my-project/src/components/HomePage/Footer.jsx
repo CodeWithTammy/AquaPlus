@@ -114,6 +114,7 @@ const Footer = () => {
             <p>Contact us for any inquiries or questions</p>
             <p>Email: aquacareadvantage@gmail.com</p>
             <p>Telephone:876-517-4831/876-844-0998</p>
+            <p>Whatsapp: 876-407-2252</p>
 
         </div>
 </div>
