@@ -59,7 +59,7 @@ const OurStorySection = () => {
               promise. A promise to protect, maintain, and enhance one of your
               home’s best features, giving you and your family the peace of mind
               to enjoy every splash, swim, and sunny day.{" "}
-              <span className="text-primary italic font-bold">Every home deserves a pool.</span>
+              <span className="text-primary italic font-bold">Every home deserves a clean pool.</span>
             </p>
           </div>
 

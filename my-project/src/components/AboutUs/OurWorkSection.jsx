@@ -9,24 +9,52 @@ const OurWorkSection = () => {
   const works = [
     {
       id: 1,
-      image: "#",
-      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758428170/workvideo_1_s1kff5.mp4",
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271274/IMG_5154_ihkode.jpg",
+      videoUrl: "#",
     },
     {
       id: 2,
-      image: "#",
-      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758428192/workvideo_2_ev4c1z.mp4",
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271276/IMG_5218_lkqpfc.jpg",
+      videoUrl: "#",
     },
     {
       id: 3,
-      image: "#",
-      videoUrl: "https://res.cloudinary.com/diwfc48gr/video/upload/v1758429031/IMG_5857_vyb5bi.mp4",
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271275/IMG_4483_g10ic1.jpg",
+      videoUrl: "#",
+    },    {
+      id: 4,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271272/IMG_4625_gdykco.jpg",
+      videoUrl: "#",
+    },    {
+      id: 5,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271273/IMG_E495AB97-BE90-4A62-B91F-E30C6A1E5F64_ksrhrj.jpg",
+      videoUrl: "#",
+    },    {
+      id: 6,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271274/IMG_4894_hvtqbi.jpg",
+      videoUrl: "#",
+    },    {
+      id: 7,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271272/IMG_5191_qjcp4t.jpg",
+      videoUrl: "#",
+    },    {
+      id: 8,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271272/IMG_5277_tg4bsk.jpg",
+      videoUrl: "#",
+    },    {
+      id: 9,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271273/IMG_4781_oqd0jr.jpg",
+      videoUrl: "#",
+    },    {
+      id: 10,
+      image: "https://res.cloudinary.com/diwfc48gr/image/upload/v1780271275/IMG_4775_s7zvt3.jpg",
+      videoUrl: "#",
     },
   ];
 
-  const openVideo = (url) => {
-    window.open(url, "_blank");
-  };
+  // const openVideo = (url) => {
+  //   window.open(url, "_blank");
+  // };
 
   return (
     <div>
@@ -64,22 +92,19 @@ const OurWorkSection = () => {
             {works.map((work) => (
               <SwiperSlide key={work.id}>
                 <div className="relative group rounded-lg overflow-hidden shadow-lg">
-                  <video
-                    src={work.videoUrl}
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-64 sm:h-72 md:h-80 lg:h-72 object-cover"
-                    poster={work.image !== "#" ? work.image : undefined}
+                  <img
+                    src={work.image}
+                    alt={`Project ${work.id}`}
+                    className="w-full h-80 sm:h-72 md:h-80 lg:h-[450px] object-fit-cover transition-transform group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-blue-500 bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                  {/* <div className="absolute inset-0 bg-blue-500 bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                     <button
                       onClick={() => openVideo(work.videoUrl)}
                       className="bg-white text-blue-600 p-3 sm:p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
                     >
                       <FaPlay className="w-4 h-4 sm:w-6 sm:h-6" />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </SwiperSlide>
             ))}

@@ -44,7 +44,7 @@ const Footer = () => {
   <img 
     src={Worker} 
     alt="Worker" 
-    className='hidden lg:block w-80 h-auto object-cover lg:translate-x-24 lg:translate-y-[-10%]' 
+    className='hidden lg:block w-80 h-96 object-cover lg:translate-x-24 lg:translate-y-[-10%]' 
   />
 </div>
 
