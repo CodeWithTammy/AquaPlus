@@ -46,7 +46,7 @@ const TeamSection = () => {
             </h2>
 
             <p className="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">
-              Meet the experienced professionals behind PoolRez. Our team is
+              Meet the experienced professionals behind AquaCarePlusPoolsJa. Our team is
               committed to delivering exceptional pool construction,
               maintenance, and customer service across Jamaica.
             </p>
