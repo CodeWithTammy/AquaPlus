@@ -1,5 +1,4 @@
 import React from 'react'
-import Worker from "/images/worker.png"
 import { GoArrowUpRight } from "react-icons/go";
 import Logo from "/images/logo.png"
 import { RxInstagramLogo } from "react-icons/rx";
@@ -42,7 +41,7 @@ const Footer = () => {
 
   {/* Image - only show on large screens */}
   <img 
-    src={Worker} 
+    src="https://res.cloudinary.com/diwfc48gr/image/upload/v1791774190/worker_omcdxm.png" 
     alt="Worker" 
     className='hidden lg:block w-80 h-96 object-cover lg:translate-x-24 lg:translate-y-[-10%]' 
   />
@@ -91,8 +90,9 @@ const Footer = () => {
     <Link to="/AboutUs"><li>About</li></Link>
     <Link to="/Services"><li>Services</li></Link>
     <Link to="/Pricing"><li>Packages</li></Link>
-    <Link to="/Rentals"><li>Rentals</li></Link>
-    <Link to="/Products"><li>Products</li></Link>
+    <Link to="/resources"><li>Resources</li></Link>
+    {/* <Link to="/Rentals"><li>Rentals</li></Link>
+    <Link to="/Products"><li>Products</li></Link> */}
     <Link to="/Contact-Us"><li>Contact</li></Link>
     <Link to="/Services"><li>Request Service</li></Link>
     <Link to="/Terms-and-Conditions"><li>Terms and Conditions</li></Link>
@@ -113,17 +113,17 @@ const Footer = () => {
             <h1 className='text-xl font-bold mb-5'>Get In Touch</h1>
             <p>Contact us for any inquiries or questions</p>
             <p>Email: aquacareadvantage@gmail.com</p>
-            <p>Telephone:876-517-4831/876-844-0998</p>
+            <p>Telephone:876-517-4831</p>
             <p>Whatsapp: 876-407-2252</p>
 
         </div>
 </div>
-
+{/* 876-844-0998 */}
     </div>
     {/* Copyright section */}
 <div className='bg-primary text-white text-center py-2 mx-0 sm:text-sm'>
-<p>Copyright © 2025 AquaCare Plus Pools. All rights reserved.</p>
-<p className='text-xs'>Designed and Developed by <a href="https://github.com/CodeWithTammy" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
+<p>Copyright © 2026 AquaCare Plus Pools. All rights reserved.</p>
+<p className='text-xs'>Designed and Developed by <a href="https://www.linkedin.com/in/tamera-anderson-92537a218" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
 </div>
 </>
   );

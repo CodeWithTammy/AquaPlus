@@ -93,7 +93,7 @@ const ContactPage = () => {
                    <h1 className='text-xl font-bold mb-5'>Get In Touch</h1>
                    <p>Contact us for any inquiries or questions</p>
                    <p>Email: aquacareadvantage@gmail.com</p>
-                   <p>Telephone: 876-517-4831/876-844-0998</p>
+                   <p>Telephone: 876-517-4831</p>
                    <p>Whatsapp: 876-407-2252</p>
        
                </div>
@@ -102,8 +102,8 @@ const ContactPage = () => {
          
            {/* Copyright section */}
        <div className='bg-primary text-white text-center py-5 mx-0 sm:text-sm'>
-       <p>Copyright © 2025 AquaCare Plus Pools. All rights reserved.</p>
-       <p className='text-xs'>Designed and Developed by <a href="https://github.com/CodeWithTammy" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
+       <p>Copyright © 2026 AquaCare Plus Pools. All rights reserved.</p>
+       <p className='text-xs'>Designed and Developed by <a href="https://www.linkedin.com/in/tamera-anderson-92537a218" className='underline text-blue-400' target='_blank'>Tamera Anderson</a></p>
 
        </div>
     </div>

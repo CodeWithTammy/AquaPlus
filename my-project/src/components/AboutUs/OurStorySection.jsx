@@ -66,7 +66,7 @@ const OurStorySection = () => {
           {/* Image */}
           <div className="w-full sm:w-80 lg:w-[50vh] flex justify-center lg:justify-end">
             <img
-              src="/images/aboutus-img.jpg"
+              src="https://res.cloudinary.com/diwfc48gr/image/upload/v1791774301/aboutus-img_tmiufu.jpg"
               alt="About Us"
               className="w-full sm:w-80 lg:w-[50vh] h-auto rounded-lg shadow-lg"
             />

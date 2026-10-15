@@ -13,10 +13,11 @@ import PricingForm from "../ReuseableComponents/PricingForm";
 import { PackagesData } from "../../../mockData/packagesdata";
 
 
-export function PackageComponent({ title, desc, price, options, showSelectButton=false, priceNote }) {
+export function PackageComponent({ title, desc, price, options, showSelectButton=false, priceNote, originalPrice, promotion }) {
 
       const [showForm, setShowForm] = useState(false);
-      
+      const displayPrice = Array.isArray(price) ? price : ["", "", ""];
+      const displayOriginalPrice = Array.isArray(originalPrice) ? originalPrice : null;
 
   return (
     
@@ -76,35 +77,65 @@ export function PackageComponent({ title, desc, price, options, showSelectButton
     >
       {desc}
     </Typography>
-    <Typography
-      variant="h3"
-      color="blue-gray"
-      className={`!mt-4 flex gap-1 !text-4xl ${
-        title === "Premium Package"
-          ? "text-secondbasecolor"
-          : title === "Standard Package"
-          ? "text-yellow-100"
-          : "text-blue-600"
-      }`}
-    >
-      {price[0]}
-      {price[1]}
-      {price[2] && (
+    <div className="!mt-4">
+      {displayOriginalPrice && (
+        <div className="mb-2 flex items-center justify-center gap-1 text-sm font-medium sm:text-base">
+          <span className={`line-through ${
+            title === "Premium Package"
+              ? "text-white/75"
+              : title === "Standard Package"
+              ? "text-yellow-100/80"
+              : "text-gray-500"
+          }`}>
+            {displayOriginalPrice[0]}{displayOriginalPrice[1]}
+            {displayOriginalPrice[2] && (
+              <span className="ml-1">/{displayOriginalPrice[2]}</span>
+            )}
+          </span>
+        </div>
+      )}
       <Typography
-        as="span"
+        variant="h3"
         color="blue-gray"
-        className={`-translate-y-0.5 self-end opacity-70 text-lg font-bold ${
+        className={`flex gap-1 !text-4xl ${
           title === "Premium Package"
-            ? "text-white opacity-100"
+            ? "text-secondbasecolor"
             : title === "Standard Package"
-            ? "text-white opacity-100"
-            : "text-black"
+            ? "text-yellow-100"
+            : "text-blue-600"
         }`}
       >
-        /{price[2]}
+        {displayPrice[0]}
+        {displayPrice[1]}
+        {displayPrice[2] && (
+        <Typography
+          as="span"
+          color="blue-gray"
+          className={`-translate-y-0.5 self-end opacity-70 text-lg font-bold ${
+            title === "Premium Package"
+              ? "text-white opacity-100"
+              : title === "Standard Package"
+              ? "text-white opacity-100"
+              : "text-black"
+          }`}
+        >
+          /{displayPrice[2]}
+        </Typography>
+        )}
       </Typography>
+      {promotion && (
+        <Typography
+          variant="small"
+          className={`mt-2 block rounded-full px-2 py-1 text-center font-semibold ${
+            title === "Standard Package"
+              ? "bg-white/20 text-white"
+              : "bg-blue-100 text-blue-700"
+          }`}
+        >
+          {promotion}
+        </Typography>
       )}
-    </Typography>
+    </div>
       {/* Price note (optional) */}
   {priceNote && (
     <Typography variant="small" className="text-gray-400 mt-1">

@@ -62,8 +62,10 @@ export const AlternatePackagesData = [
   },
   {
     title: "Standard Package",
-    desc: "Per month: Twice weekly maintenance.\nIdeal for residential commercial pools with moderate use.",
-    price: ["JMD$", "74,200", "mo"],
+    desc: "Twice weekly visit; ideal for AirBnBs, Villas, and some residential community pools.",
+    price: ["JMD$", "56,600", "mo"],
+    originalPrice: ["JMD$", "74,200", "mo"],
+    promotion: "23% OFF — Sign up between now and January 2027!",
     note: "Prices before toll per month",
     options: PackagesData[1].options,
   },

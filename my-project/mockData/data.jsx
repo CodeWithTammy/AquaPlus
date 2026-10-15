@@ -58,16 +58,21 @@ export const NavbarMenu = [
   },
   {
     id: 5,
-    title: "Rentals",
-    link: "/Rentals",
+    title: "Resources",
+    link: "/Resources",
   },
+  // {
+  //   id: 5,
+  //   title: "Rentals",
+  //   link: "/Rentals",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Products",
+  //   link: "/Products",
+  // },
   {
     id: 6,
-    title: "Products",
-    link: "/Products",
-  },
-  {
-    id: 7,
     title: "Contact",
     link: "/Contact-Us",
   },

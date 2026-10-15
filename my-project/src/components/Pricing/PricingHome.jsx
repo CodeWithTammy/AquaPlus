@@ -17,6 +17,7 @@ const faqs = [
   { q: "What is the frequency of the starter package?", a: "We will be onsite one time per week during any particular month." },
   { q: "What is the frequency of the premium package?", a: "There is no set frequency. Our team will visit during working hours, up to 5 times per week."},
   { q: "Do the above packages include the purchase of chemicals?", a: "Yes, chemicals are included in the packages." },
+  { q: "What does it cost to maintain a Residential Apartment complex pool?", a: "The cost is dependent on your location, and the bather load of your pool weekly. Contact us for pricing." },
 ];
 
 const PricingHome = () => {
@@ -90,14 +91,16 @@ const PricingHome = () => {
 
             {/* Packages Grid */}
             <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
-              {packagesToShow.map(({ title, desc, price, options, note, contactUs }, key) => (
+              {packagesToShow.map(({ title, desc, price, options, note, contactUs, originalPrice, promotion }, key) => (
                 <PackageComponent
                   key={key}
                   title={title}
                   desc={desc}
                   price={price}
+                  originalPrice={originalPrice}
+                  promotion={promotion}
                   options={options}
-                  priceNote={note}        // <-- pass the note for each package
+                  priceNote={note}
                   showSelectButton={!contactUs}
                   contactUs={contactUs}
                 />

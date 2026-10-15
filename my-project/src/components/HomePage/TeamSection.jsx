@@ -6,14 +6,14 @@ const TeamSection = () => {
     {
       name: "Tyreece Morris",
       role: "Managing Director",
-      img: "/images/tyreece.png",
+      img: "https://res.cloudinary.com/diwfc48gr/image/upload/v1791773578/tyreece_a7a8fm.png",
       description:
         "5+ years of experience in Pool Service and Construction.",
     },
     {
       name: "Javan Thompson",
       role: "COO / Field Manager",
-      img: "/images/javan.png",
+      img: "https://res.cloudinary.com/diwfc48gr/image/upload/v1791773642/Gemini_Generated_Image_h2of15h2of15h2of_hfm4gl.jpg",
       description:
         "5+ years of experience in Pool Service and Mechanical Engineering.",
     },

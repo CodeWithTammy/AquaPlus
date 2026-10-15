@@ -10,7 +10,7 @@ const Banner = () => {
 
       {/* Banner Image */}
       <img
-        src="/images/bannerimg.jpg"
+        src="https://res.cloudinary.com/diwfc48gr/image/upload/v1791771443/banner-img_lznudv.jpg"
         alt="AquaCare Plus Pools Banner"
         className="w-full h-full object-cover"
         loading="eager" // ensures the banner loads immediately

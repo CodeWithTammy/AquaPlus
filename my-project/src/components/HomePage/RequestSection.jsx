@@ -321,7 +321,7 @@ const handleSubmit = async (e) => {
         {/* Right - Image Section */}
         <div className="hidden lg:block lg:w-1/2">
           <img
-            src="/images/quoteimg.jpg"
+            src="https://res.cloudinary.com/diwfc48gr/image/upload/v1791773488/quoteimg_pzyj5k.jpg"
             alt="Poolside"
             className="w-full h-[60rem] object-cover"
           />
